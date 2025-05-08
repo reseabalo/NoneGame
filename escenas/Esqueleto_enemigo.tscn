@@ -1,0 +1,123 @@
+[gd_scene load_steps=18 format=3 uid="uid://detago3mtp8rp"]
+
+[ext_resource type="Texture2D" uid="uid://drvyvv2epy277" path="res://Assets/Skeleton/Sprite Sheets/Skeleton Idle.png" id="1_fi5j6"]
+[ext_resource type="Script" uid="uid://bslbwf3a3gdxp" path="res://Codigo/esqueleto_enemigo.gd" id="1_jb82q"]
+[ext_resource type="Script" uid="uid://ce03jsbdwljjk" path="res://Codigo/Vida.gd" id="2_b2830"]
+[ext_resource type="Script" uid="uid://e8u0byn0dbto" path="res://Codigo/hurtbox.gd" id="2_tjhwg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eglei"]
+atlas = ExtResource("1_fi5j6")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2kr7"]
+atlas = ExtResource("1_fi5j6")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drpwk"]
+atlas = ExtResource("1_fi5j6")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epwgn"]
+atlas = ExtResource("1_fi5j6")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61ufc"]
+atlas = ExtResource("1_fi5j6")
+region = Rect2(96, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxocc"]
+atlas = ExtResource("1_fi5j6")
+region = Rect2(120, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lipa"]
+atlas = ExtResource("1_fi5j6")
+region = Rect2(144, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6anut"]
+atlas = ExtResource("1_fi5j6")
+region = Rect2(168, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruo8p"]
+atlas = ExtResource("1_fi5j6")
+region = Rect2(192, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rbhd"]
+atlas = ExtResource("1_fi5j6")
+region = Rect2(216, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqkfi"]
+atlas = ExtResource("1_fi5j6")
+region = Rect2(240, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p4mau"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eglei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2kr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drpwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epwgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61ufc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxocc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lipa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6anut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruo8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rbhd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqkfi")
+}],
+"loop": true,
+"name": &"Quieto",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f332p"]
+radius = 7.0
+
+[node name="Esqueleto" type="CharacterBody2D"]
+script = ExtResource("1_jb82q")
+
+[node name="Vida" type="Node" parent="."]
+script = ExtResource("2_b2830")
+metadata/_custom_type_script = "uid://ce03jsbdwljjk"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p4mau")
+animation = &"Quieto"
+autoplay = "Quieto"
+frame_progress = 0.654834
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 3)
+shape = SubResource("CapsuleShape2D_f332p")
+
+[node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("vida")]
+collision_layer = 0
+script = ExtResource("2_tjhwg")
+vida = NodePath("../Vida")
+metadata/_custom_type_script = "uid://e8u0byn0dbto"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-5, 3)
+shape = SubResource("CapsuleShape2D_f332p")
+
+[connection signal="vida_termino" from="Vida" to="." method="_on_vida_vida_termino"]

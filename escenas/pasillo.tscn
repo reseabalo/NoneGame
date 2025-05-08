@@ -1,0 +1,157 @@
+[gd_scene load_steps=8 format=4 uid="uid://1kqawme58sts"]
+
+[ext_resource type="Texture2D" uid="uid://b87uf04hakbd1" path="res://Assets/Proyecto/AssetsNoneGame/Ambiente.png" id="1_cfjmm"]
+[ext_resource type="Script" uid="uid://b1u88p8qc3tay" path="res://Codigo/pasillo.gd" id="1_ioxvj"]
+[ext_resource type="PackedScene" uid="uid://dfi678i72extx" path="res://escenas/puertas.tscn" id="2_tbkxp"]
+[ext_resource type="PackedScene" uid="uid://cu82am0651fpq" path="res://escenas/Jugador.tscn" id="3_io7u1"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tbkxp"]
+texture = ExtResource("1_cfjmm")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(1.70866, -8, 8, -8, 8, 8, 1.5288, 8)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -1.88852, -8, -1.70866, 8, -8, 8)
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_io7u1"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_tbkxp")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ioxvj"]
+normal = Vector2(0, 1)
+distance = 9.0
+
+[node name="Pasillo" type="Node2D"]
+script = ExtResource("1_ioxvj")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(-25, 0)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAQAAAAAAAEAAAAAAAUAAAABAAAAAAABAAQAAAABAAEAAAABAAUAAAAAAAIAAAAAAAQAAAAAAAMAAAAAAAUAAAABAAIAAAABAAQAAAABAAMAAAABAAUAAAAAAAQAAAAAAAQAAAAAAAUAAAAAAAUAAAABAAQAAAABAAQAAAABAAUAAAABAAUAAAAAAAYAAAAAAAQAAAAAAAcAAAAAAAUAAAABAAYAAAABAAQAAAABAAcAAAABAAUAAAACAAAAAAAAAAQAAAACAAEAAAAAAAUAAAADAAAAAAABAAQAAAADAAEAAAABAAUAAAACAAIAAAAAAAQAAAACAAMAAAAAAAUAAAADAAIAAAABAAQAAAADAAMAAAABAAUAAAACAAQAAAAAAAQAAAACAAUAAAAAAAUAAAADAAQAAAABAAQAAAADAAUAAAABAAUAAAACAAYAAAAAAAQAAAACAAcAAAAAAAUAAAADAAYAAAABAAQAAAADAAcAAAABAAUAAAAAAPj/AAAAAAQAAAAAAPn/AAAAAAUAAAABAPj/AAABAAQAAAABAPn/AAABAAUAAAAAAPr/AAAAAAQAAAAAAPv/AAAAAAUAAAABAPr/AAABAAQAAAABAPv/AAABAAUAAAAAAPz/AAAAAAQAAAAAAP3/AAAAAAUAAAABAPz/AAABAAQAAAABAP3/AAABAAUAAAAAAP7/AAAAAAQAAAAAAP//AAAAAAUAAAABAP7/AAABAAQAAAABAP//AAABAAUAAAACAPj/AAAAAAQAAAACAPn/AAAAAAUAAAADAPj/AAABAAQAAAADAPn/AAABAAUAAAACAPr/AAAAAAQAAAACAPv/AAAAAAUAAAADAPr/AAABAAQAAAADAPv/AAABAAUAAAACAPz/AAAAAAQAAAACAP3/AAAAAAUAAAADAPz/AAABAAQAAAADAP3/AAABAAUAAAACAP7/AAAAAAQAAAACAP//AAAAAAUAAAADAP7/AAABAAQAAAADAP//AAABAAUAAAAEAPj/AAABAAMAAAAEAPn/AAABAAMAAAAEAPr/AAABAAMAAAAEAPv/AAABAAMAAAAEAPz/AAABAAMAAAAEAP3/AAABAAMAAAAEAP7/AAABAAMAAAAEAP//AAABAAMAAAAEAAAAAAABAAMAAAAEAAEAAAABAAMAAAAEAAIAAAABAAMAAAAEAAMAAAABAAMAAAAEAAQAAAABAAMAAAAEAAUAAAABAAMAAAAEAAYAAAABAAMAAAAEAAcAAAABAAMAAAD///j/AAAAAAMAAAD///n/AAAAAAMAAAD///r/AAAAAAMAAAD///v/AAAAAAMAAAD///z/AAAAAAMAAAD///3/AAAAAAMAAAD///7/AAAAAAMAAAD/////AAAAAAMAAAD//wAAAAAAAAMAAAD//wEAAAAAAAMAAAD//wIAAAAAAAMAAAD//wMAAAAAAAMAAAD//wQAAAAAAAMAAAD//wUAAAAAAAMAAAD//wYAAAAAAAMAAAD//wcAAAAAAAMAAAA=")
+tile_set = SubResource("TileSet_io7u1")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-2, -139)
+shape = SubResource("WorldBoundaryShape2D_ioxvj")
+
+[node name="Puertas" type="Node" parent="."]
+
+[node name="puerta W" parent="Puertas" instance=ExtResource("2_tbkxp")]
+position = Vector2(6, 120)
+etiqueta_nivel_destinar = "comedor"
+etiqueta_pueta_destinar = "E"
+salida_dirreccion = "abajo"
+
+[node name="CollisionShape2D" parent="Puertas/puerta W" index="0"]
+position = Vector2(1, 16)
+
+[node name="spawn" parent="Puertas/puerta W" index="1"]
+position = Vector2(1, -15)
+
+[node name="Principal" parent="." instance=ExtResource("3_io7u1")]
+position = Vector2(12, -30)
+
+[node name="Camera2D" type="Camera2D" parent="Principal"]
+zoom = Vector2(2, 2)
+
+[editable path="Puertas/puerta W"]
