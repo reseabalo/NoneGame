@@ -48,9 +48,9 @@ func set_inmortalidad_temporal(tiempo: float):
 	inmortalidad_temporal.start()
 
 func set_vida(valor: int):
-	if valor < vida and inmortalidad:
+	if  valor < vida and inmortalidad:
 		return
-	
+	print(vida)
 	var valor_fijo = clampi(valor,0,vida_maxima)
 	
 	if valor_fijo != vida:
@@ -58,7 +58,7 @@ func set_vida(valor: int):
 		vida = valor
 		vida_cambio.emit(diferencia)
 		
-		if vida == 0:
+		if vida <= 0:
 			vida_termino.emit()
 
 func get_vida():

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b87uf04hakbd1" path="res://Assets/Proyecto/AssetsNoneGame/Ambiente.png" id="1_cfjmm"]
 [ext_resource type="Script" uid="uid://b1u88p8qc3tay" path="res://Codigo/pasillo.gd" id="1_ioxvj"]
-[ext_resource type="PackedScene" uid="uid://dfi678i72extx" path="res://escenas/puertas.tscn" id="2_tbkxp"]
+[ext_resource type="PackedScene" uid="uid://dfi678i72extx" path="res://escenas/puerta.tscn" id="2_tbkxp"]
 [ext_resource type="PackedScene" uid="uid://cu82am0651fpq" path="res://escenas/Jugador.tscn" id="3_io7u1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tbkxp"]
@@ -137,10 +137,9 @@ shape = SubResource("WorldBoundaryShape2D_ioxvj")
 [node name="Puertas" type="Node" parent="."]
 
 [node name="puerta W" parent="Puertas" instance=ExtResource("2_tbkxp")]
-position = Vector2(6, 120)
+position = Vector2(6, 126)
 etiqueta_nivel_destinar = "comedor"
 etiqueta_pueta_destinar = "E"
-salida_dirreccion = "abajo"
 
 [node name="CollisionShape2D" parent="Puertas/puerta W" index="0"]
 position = Vector2(1, 16)
@@ -152,6 +151,6 @@ position = Vector2(1, -15)
 position = Vector2(12, -30)
 
 [node name="Camera2D" type="Camera2D" parent="Principal"]
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
 
 [editable path="Puertas/puerta W"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cu82am0651fpq"]
+[gd_scene load_steps=44 format=3 uid="uid://cu82am0651fpq"]
 
 [ext_resource type="Script" uid="uid://yixqcyd4x06m" path="res://Codigo/jugador.gd" id="1_s1vfj"]
 [ext_resource type="Script" uid="uid://ce03jsbdwljjk" path="res://Codigo/Vida.gd" id="2_eexci"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bdjytlsp754wa" path="res://Codigo/hitbox.gd" id="4_p52f3"]
 [ext_resource type="Script" uid="uid://bw8t5j1fu6e6l" path="res://Codigo/CambioColisiones.gd" id="5_eexci"]
 [ext_resource type="Script" uid="uid://bramogjdwanei" path="res://Codigo/jugador_animacion.gd" id="5_ig1bj"]
+[ext_resource type="Script" uid="uid://e8u0byn0dbto" path="res://Codigo/hurtbox.gd" id="7_uespe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4mp40"]
 size = Vector2(15, 6)
@@ -330,6 +331,9 @@ states/caminata/position = Vector2(279.111, 90.1546)
 transitions = ["Start", "caminata", SubResource("AnimationNodeStateMachineTransition_s1vfj"), "caminata", "ilde ", SubResource("AnimationNodeStateMachineTransition_eexci"), "ilde ", "caminata", SubResource("AnimationNodeStateMachineTransition_uespe"), "ilde ", "ataque", SubResource("AnimationNodeStateMachineTransition_p52f3"), "caminata", "ataque", SubResource("AnimationNodeStateMachineTransition_ig1bj"), "ataque", "ilde ", SubResource("AnimationNodeStateMachineTransition_meqng")]
 graph_offset = Vector2(-262.846, -6.96418)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p52f3"]
+size = Vector2(16, 19)
+
 [node name="Principal" type="CharacterBody2D"]
 collision_layer = 5
 script = ExtResource("1_s1vfj")
@@ -397,6 +401,16 @@ animation_tree = NodePath("../AnimationTree")
 juga = NodePath("..")
 cambio_colisiones = NodePath("../AnimatedSprite2D/HitBox/Golpe")
 
+[node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("vida")]
+script = ExtResource("7_uespe")
+vida = NodePath("../Vida")
+metadata/_custom_type_script = "uid://e8u0byn0dbto"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 9.5)
+shape = SubResource("RectangleShape2D_p52f3")
+
+[connection signal="vida_termino" from="Vida" to="." method="_on_vida_vida_termino"]
 [connection signal="timeout" from="Timers/dash_tiempo" to="." method="_on_dash_tiempo_timeout"]
 [connection signal="timeout" from="Timers/dash_devuelta" to="." method="_on_dash_devuelta_timeout"]
 [connection signal="timeout" from="Timers/ataque_tiempo" to="." method="_on_ataque_tiempo_timeout"]

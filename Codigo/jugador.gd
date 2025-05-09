@@ -76,3 +76,7 @@ func _on_ataque_tiempo_timeout():
 func _on_ataque_devuelta_timeout():
 	can_atacar = true
 	
+
+func _on_vida_vida_termino() -> void:
+	queue_free()
+	get_tree().call_deferred("reload_current_scene")
