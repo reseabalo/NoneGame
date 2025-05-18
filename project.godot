@@ -10,14 +10,22 @@ config_version=5
 
 [application]
 
-config/name="Prototipo Juego"
-run/main_scene="uid://cx8bho37mb3w8"
+config/name="NoneGame"
+run/main_scene="uid://dli471tb8hdt7"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-ManejoNavegacion="*res://Codigo/manejo_navegacion.gd"
+ManejoEscenas="*res://Codigo/CambioEscena/ManejoEscenas.gd"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+window/stretch/scale_mode="integer"
 
 [input]
 
@@ -59,4 +67,4 @@ Ataque={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color=Color(0.089322, 0.272438, 0.364512, 1)

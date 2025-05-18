@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://gbwcopsgryfr"]
+
+[ext_resource type="Texture2D" uid="uid://ckgdoiup5g6bj" path="res://Assets/Proyecto/AssetsNoneGame/Pava.png" id="1_wcqad"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rmdr"]
+atlas = ExtResource("1_wcqad")
+region = Rect2(0, 0, 16, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ow22"]
+atlas = ExtResource("1_wcqad")
+region = Rect2(16, 0, 16, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h65k1"]
+atlas = ExtResource("1_wcqad")
+region = Rect2(32, 0, 16, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gkuu"]
+atlas = ExtResource("1_wcqad")
+region = Rect2(48, 0, 16, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aesqg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rmdr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ow22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h65k1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gkuu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.8
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_aesqg")
+autoplay = "default"
+frame_progress = 0.883104
+flip_h = true

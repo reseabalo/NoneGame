@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbnjv3omindx2"]
+
+[ext_resource type="Texture2D" uid="uid://ckqs384vyko8q" path="res://Assets/Texturas/Facu-Idle.png" id="1_d1f52"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08q32"]
+atlas = ExtResource("1_d1f52")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rdwq"]
+atlas = ExtResource("1_d1f52")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkbao"]
+atlas = ExtResource("1_d1f52")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lu2m"]
+atlas = ExtResource("1_d1f52")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wx8iq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08q32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rdwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkbao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lu2m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_wx8iq")
+frame_progress = 0.0357355
