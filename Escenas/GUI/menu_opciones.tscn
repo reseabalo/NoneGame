@@ -1,0 +1,97 @@
+[gd_scene load_steps=5 format=3 uid="uid://xaruokgo4fo"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_fy874"]
+color = Color(0, 0, 0, 0)
+thickness = 3
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_yvdxb"]
+color = Color(0, 0, 0, 0)
+thickness = 3
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_bftl0"]
+color = Color(0, 0, 0, 0)
+thickness = 3
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_vtwhv"]
+color = Color(0, 0, 0, 0)
+thickness = 3
+
+[node name="Menu Opciones" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 2
+offset_right = 640.0
+current_tab = 0
+
+[node name="Sonido" type="VBoxContainer" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Master" type="Label" parent="TabContainer/Sonido"]
+layout_mode = 2
+text = " Sonido"
+horizontal_alignment = 1
+
+[node name="SonidoTotal" type="HSlider" parent="TabContainer/Sonido"]
+layout_mode = 2
+
+[node name="Separator" type="HSeparator" parent="TabContainer/Sonido"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_fy874")
+
+[node name="SFX" type="Label" parent="TabContainer/Sonido"]
+layout_mode = 2
+text = "SFX"
+horizontal_alignment = 1
+
+[node name="EfectosSonido" type="HSlider" parent="TabContainer/Sonido"]
+layout_mode = 2
+
+[node name="Separator 2" type="HSeparator" parent="TabContainer/Sonido"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_yvdxb")
+
+[node name="Ambiente2" type="Label" parent="TabContainer/Sonido"]
+layout_mode = 2
+text = "Ambiente"
+horizontal_alignment = 1
+
+[node name="Ambiente" type="HSlider" parent="TabContainer/Sonido"]
+layout_mode = 2
+
+[node name="Separator 3" type="HSeparator" parent="TabContainer/Sonido"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_bftl0")
+
+[node name="Musica2" type="Label" parent="TabContainer/Sonido"]
+layout_mode = 2
+text = "Musica"
+horizontal_alignment = 1
+
+[node name="Musica" type="HSlider" parent="TabContainer/Sonido"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Sonido"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_vtwhv")
+
+[node name="CheckButton" type="CheckButton" parent="TabContainer/Sonido"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Mute"
+
+[node name="Controles" type="VBoxContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Graficos" type="VBoxContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
