@@ -20,5 +20,8 @@ func _on_option_button_item_selected(index: int) -> void:
 	get_window().set_size(GUI.resoluciones[key])
 	GUI.centrar_ventana()
 	
-func _on_button_button_up() -> void:
+func _on_reanudar_button_up() -> void:
 	GUI._cambio_visibilidad()
+
+func _on_salir_button_up() -> void:
+	get_tree().quit()

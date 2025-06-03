@@ -1,67 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://dli471tb8hdt7"]
+[gd_scene load_steps=3 format=3 uid="uid://dli471tb8hdt7"]
 
-[ext_resource type="Script" uid="uid://cgqi6ejyma6ya" path="res://Scrips/ManejoEscenas/pantalla_inico.gd" id="1_6i2i5"]
+[ext_resource type="Script" uid="uid://bmeyp3oob10nk" path="res://Scrips/ManejoEscenas/pantalla_inico.gd" id="1_6i2i5"]
+[ext_resource type="Texture2D" uid="uid://dcwrj6roxpgyj" path="res://Assets/Entorno/FrenteUni.png" id="2_i58nd"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_psuw0"]
-bg_color = Color(0.782064, 0.169724, 0.780344, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.780392, 0.168627, 0.780392, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-shadow_color = Color(0, 0, 0, 0.360784)
-shadow_size = 1
-shadow_offset = Vector2(1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4sjf1"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-shadow_color = Color(0, 0, 0, 0.360784)
-shadow_size = 1
-shadow_offset = Vector2(1, 1)
-
-[node name="PantallaInico" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="PantallaInicio" type="Node2D"]
 script = ExtResource("1_6i2i5")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -322.0
+offset_top = -360.0
+offset_right = 318.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+texture = ExtResource("2_i58nd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="Inicio" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
-alignment = 1
+text = "Empezar"
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="Salir" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
+text = "Salir"
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer"]
-layout_mode = 2
-theme_override_styles/hover = SubResource("StyleBoxFlat_psuw0")
-theme_override_styles/normal = SubResource("StyleBoxFlat_4sjf1")
-text = "EMPEZAR"
-
-[connection signal="button_up" from="VBoxContainer/HBoxContainer/MarginContainer/Button" to="." method="_on_button_button_up"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Inicio" to="." method="_on_inicio_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Salir" to="." method="_on_salir_pressed"]

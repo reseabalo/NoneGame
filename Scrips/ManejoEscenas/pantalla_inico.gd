@@ -1,14 +1,7 @@
-extends Control
-class_name StartScreen 
+extends Node2D
 
-func _on_button_button_up() -> void:
-	ManejoEscenas._agregar_pantalla_carga()
+func _on_inicio_pressed() -> void:
 	get_tree().call_deferred("change_scene_to_file","res://Escenas/Niveles/Buffet.tscn")
-	
 
-
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
-		ManejoEscenas._agregar_pantalla_carga()
-		get_tree().call_deferred("change_scene_to_file","res://Escenas/Niveles/Buffet.tscn")
-		
+func _on_salir_pressed() -> void:
+	get_tree().quit()

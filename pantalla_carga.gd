@@ -1,4 +1,5 @@
-class_name LoadingScreen extends Node2D
+class_name LoadingScreen extends CanvasLayer
+
 
 signal transition_in_complete
 

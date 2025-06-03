@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://yixqcyd4x06m" path="res://Scrips/Jugador/jugador.gd" id="1_s1vfj"]
 [ext_resource type="Script" uid="uid://ce03jsbdwljjk" path="res://Scrips/ManejoVida/Vida.gd" id="2_eexci"]
 [ext_resource type="Texture2D" uid="uid://vfobdlxrncha" path="res://Assets/Player/sprite_sheet.png" id="3_uespe"]
-[ext_resource type="Script" uid="uid://bdjytlsp754wa" path="res://Scrips/ManejoVida/hitbox.gd" id="4_p52f3"]
+[ext_resource type="Script" uid="uid://bdjytlsp754wa" path="res://Scrips/ManejoVida/hitbox.gd" id="4_oolwk"]
 [ext_resource type="Script" uid="uid://bw8t5j1fu6e6l" path="res://Scrips/Jugador/CambioColisiones.gd" id="5_eexci"]
 [ext_resource type="Script" uid="uid://bramogjdwanei" path="res://Scrips/Jugador/jugador_animacion.gd" id="5_ig1bj"]
-[ext_resource type="Script" uid="uid://e8u0byn0dbto" path="res://Scrips/ManejoVida/hurtbox.gd" id="7_uespe"]
+[ext_resource type="Script" uid="uid://e8u0byn0dbto" path="res://Scrips/ManejoVida/hurtbox.gd" id="7_b8jmg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4mp40"]
 size = Vector2(15, 6)
@@ -331,12 +331,11 @@ states/caminata/position = Vector2(279.111, 90.1546)
 transitions = ["Start", "caminata", SubResource("AnimationNodeStateMachineTransition_s1vfj"), "caminata", "ilde ", SubResource("AnimationNodeStateMachineTransition_eexci"), "ilde ", "caminata", SubResource("AnimationNodeStateMachineTransition_uespe"), "ilde ", "ataque", SubResource("AnimationNodeStateMachineTransition_p52f3"), "caminata", "ataque", SubResource("AnimationNodeStateMachineTransition_ig1bj"), "ataque", "ilde ", SubResource("AnimationNodeStateMachineTransition_meqng")]
 graph_offset = Vector2(-262.846, 31.3223)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uespe"]
-size = Vector2(15, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v328t"]
+size = Vector2(10, 19)
 
-[node name="Principal" type="CharacterBody2D"]
-collision_layer = 5
-collision_mask = 5
+[node name="Jugador" type="CharacterBody2D"]
+collision_layer = 7
 script = ExtResource("1_s1vfj")
 
 [node name="Vida" type="Node" parent="."]
@@ -355,7 +354,10 @@ sprite_frames = SubResource("SpriteFrames_3i2lk")
 animation = &"ilde"
 
 [node name="HitBox" type="Area2D" parent="AnimatedSprite2D"]
-script = ExtResource("4_p52f3")
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_oolwk")
+metadata/_custom_type_script = "uid://bdjytlsp754wa"
 
 [node name="Golpe" type="CollisionShape2D" parent="AnimatedSprite2D/HitBox"]
 position = Vector2(15, 4)
@@ -403,13 +405,16 @@ cambio_colisiones = NodePath("../AnimatedSprite2D/HitBox/Golpe")
 
 [node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("vida")]
 collision_layer = 0
-script = ExtResource("7_uespe")
+collision_mask = 2
+script = ExtResource("7_b8jmg")
 vida = NodePath("../Vida")
+metadata/_custom_type_script = "uid://e8u0byn0dbto"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-1, 9)
-shape = SubResource("RectangleShape2D_uespe")
+position = Vector2(0, 9.5)
+shape = SubResource("RectangleShape2D_v328t")
 
+[connection signal="vida_cambio" from="Vida" to="." method="_on_vida_vida_cambio"]
 [connection signal="vida_termino" from="Vida" to="." method="_on_vida_vida_termino"]
 [connection signal="timeout" from="Timers/dash_tiempo" to="." method="_on_dash_tiempo_timeout"]
 [connection signal="timeout" from="Timers/dash_devuelta" to="." method="_on_dash_devuelta_timeout"]

@@ -48,7 +48,7 @@ custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Button" type="Button" parent="Panel/HBoxContainer/VBoxContainer/MarginContainer"]
+[node name="Reanudar" type="Button" parent="Panel/HBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 text = "Reanudar"
 icon_alignment = 1
@@ -73,5 +73,12 @@ size_flags_vertical = 8
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_bftl0")
 
-[connection signal="button_up" from="Panel/HBoxContainer/VBoxContainer/MarginContainer/Button" to="." method="_on_button_button_up"]
+[node name="Salir" type="Button" parent="Panel/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Salir"
+
+[connection signal="button_up" from="Panel/HBoxContainer/VBoxContainer/MarginContainer/Reanudar" to="." method="_on_reanudar_button_up"]
 [connection signal="item_selected" from="Panel/HBoxContainer/VBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="button_up" from="Panel/HBoxContainer/VBoxContainer/Salir" to="." method="_on_salir_button_up"]
