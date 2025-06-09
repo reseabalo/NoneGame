@@ -1,16 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dct0cxufbvshm"]
+[gd_scene load_steps=11 format=3 uid="uid://dct0cxufbvshm"]
 
-[ext_resource type="Script" uid="uid://be8tfeopqdel0" path="res://Scrips/GUI/menu_opciones.gd" id="1_wence"]
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_yvdxb"]
-color = Color(0, 0, 0, 0)
-
-[sub_resource type="LabelSettings" id="LabelSettings_yvdxb"]
-font_size = 20
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_bftl0"]
-color = Color(0, 0, 0, 0)
-thickness = 5
+[ext_resource type="Script" uid="uid://be8tfeopqdel0" path="res://Scrips/GUI/MenuPausa.gd" id="1_wence"]
+[ext_resource type="Texture2D" uid="uid://nq3piuj16jcl" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/OpcionesNormal.png" id="2_o527e"]
+[ext_resource type="Texture2D" uid="uid://bvwnkdvakqpyd" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesOpciones/ReanudarNormal.png" id="2_obpqu"]
+[ext_resource type="Texture2D" uid="uid://bnnske8hxtsg5" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesOpciones/ReanudarClick.png" id="3_55aee"]
+[ext_resource type="Texture2D" uid="uid://dnka7k8ech6eu" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/OpcionesClick.png" id="3_wcmrk"]
+[ext_resource type="Texture2D" uid="uid://uiivis158l0d" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/OpcionesMouseArriba.png" id="4_7begj"]
+[ext_resource type="Texture2D" uid="uid://sawcsf472w3v" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesOpciones/ReanudarMouseArriba.png" id="4_7v4fu"]
+[ext_resource type="Texture2D" uid="uid://cw0bxa2a6ewev" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/SalirNormal.png" id="5_obpqu"]
+[ext_resource type="Texture2D" uid="uid://do207t3mtmi1p" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/SalirClick.png" id="6_55aee"]
+[ext_resource type="Texture2D" uid="uid://pj4ve30ocv0o" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/SalirMouseArriba.png" id="7_7v4fu"]
 
 [node name="Menu Pausa" type="Control"]
 layout_mode = 3
@@ -43,42 +42,32 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(120, 40)
+[node name="Reanudar" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_obpqu")
+texture_pressed = ExtResource("3_55aee")
+texture_hover = ExtResource("4_7v4fu")
 
-[node name="Reanudar" type="Button" parent="Panel/HBoxContainer/VBoxContainer/MarginContainer"]
-layout_mode = 2
-text = "Reanudar"
-icon_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="Panel/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxLine_yvdxb")
-
-[node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Opciones"
-label_settings = SubResource("LabelSettings_yvdxb")
-horizontal_alignment = 1
-
-[node name="OptionButton" type="OptionButton" parent="Panel/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 40)
+[node name="Opciones" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_vertical = 4
+texture_normal = ExtResource("2_o527e")
+texture_pressed = ExtResource("3_wcmrk")
+texture_hover = ExtResource("4_7begj")
 
-[node name="HSeparator2" type="HSeparator" parent="Panel/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxLine_bftl0")
-
-[node name="Salir" type="Button" parent="Panel/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(100, 40)
+[node name="Salir" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Salir"
+size_flags_vertical = 4
+texture_normal = ExtResource("5_obpqu")
+texture_pressed = ExtResource("6_55aee")
+texture_hover = ExtResource("7_7v4fu")
 
-[connection signal="button_up" from="Panel/HBoxContainer/VBoxContainer/MarginContainer/Reanudar" to="." method="_on_reanudar_button_up"]
-[connection signal="item_selected" from="Panel/HBoxContainer/VBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
-[connection signal="button_up" from="Panel/HBoxContainer/VBoxContainer/Salir" to="." method="_on_salir_button_up"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Reanudar" to="." method="_on_reanudar_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Opciones" to="." method="_on_opciones_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Salir" to="." method="_on_salir_pressed"]

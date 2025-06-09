@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cu82am0651fpq" path="res://Escenas/Jugador/Jugador.tscn" id="7_jvflc"]
 [ext_resource type="PackedScene" uid="uid://ct45558fs3fqf" path="res://Escenas/Jugador/barra_vida.tscn" id="8_tjwlx"]
 [ext_resource type="PackedScene" uid="uid://bbnjv3omindx2" path="res://Escenas/NPC/Facu.tscn" id="9_ddc0e"]
-[ext_resource type="Script" uid="uid://bdjytlsp754wa" path="res://Scrips/ManejoVida/hitbox.gd" id="10_ddc0e"]
+[ext_resource type="Script" uid="uid://bdjytlsp754wa" path="res://Scrips/ManejoVida/Hitbox.gd" id="10_ddc0e"]
 [ext_resource type="PackedScene" uid="uid://davojwc10irw8" path="res://Escenas/Objeto/Pava.tscn" id="10_v35h6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_om188"]
@@ -1187,12 +1187,13 @@ position = Vector2(420, -11)
 tipo_transicion = "ir_oscurecer"
 direccion_nivel = "res://Escenas/Niveles/aula.tscn"
 nombre_puerta_destinar = "PuertaBuffet"
+direccion_entrada = null
 
 [node name="Spawn" parent="PuertaAula" index="0"]
-position = Vector2(4, 16)
+position = Vector2(6, 23)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuertaAula"]
-position = Vector2(4, 4)
+position = Vector2(4, 3)
 shape = SubResource("RectangleShape2D_om188")
 
 [node name="Mapa" type="Node2D" parent="."]
@@ -1235,7 +1236,7 @@ z_index = 3
 position = Vector2(67, 106)
 
 [node name="Camera2D" type="Camera2D" parent="Jugador"]
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
 limit_top = -62
 limit_right = 917
 limit_bottom = 294
@@ -1245,12 +1246,12 @@ limit_smoothed = true
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Colision Paredes"]
-visibility_layer = 5
 z_index = 10
 polygon = PackedVector2Array(-0.169365, -2.02015, 1, 109, -94, 110, -94, 142, -337, 142, -338, 79, -709, 77, -708, 17, -330, 16, -329, 83, -100, 78, -101, 32, -8, 32, -6, -42, 910, -46, 922, -46, 923, 80, 317, 87, 317, 297, -17, 300, -17, 208, -438, 204, -441, 141, -713, 138, -711, 81, -703, 79, -704, 130, -434, 128, -434, 191, -16, 190, -17, 158, -1, 158, -1, 286, 304, 288, 303, 63, 910, 61, 908, -2)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Colision Paredes"]
 z_index = 10
+position = Vector2(-1, 1)
 polygon = PackedVector2Array(160, 47, 192, 47, 191, 13, 160, 13)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

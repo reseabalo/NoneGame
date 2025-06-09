@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://befaora7kdr0p"]
 
-[ext_resource type="VideoStream" uid="uid://daut4nowvf5fm" path="res://Assets/Intro1.0.ogv" id="1_f8vwp"]
+[ext_resource type="VideoStream" uid="uid://daut4nowvf5fm" path="res://Assets/Cinematicas/Intro1.0.ogv" id="1_f8vwp"]
 
 [node name="Intro" type="Control"]
 layout_mode = 3

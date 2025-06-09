@@ -1,5 +1,5 @@
-class_name  Vida
 extends Node
+class_name  Vida
 
 
 signal vida_maxima_cambio(diff: int)

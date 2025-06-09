@@ -423,6 +423,7 @@ position = Vector2(194, 150)
 tipo_transicion = "ir_oscurecer"
 direccion_nivel = "res://Escenas/Niveles/Buffet.tscn"
 nombre_puerta_destinar = "PuertaAula"
+direccion_entrada = null
 
 [node name="Spawn" parent="PuertaBuffet" index="0"]
 position = Vector2(-3, -27)
@@ -437,6 +438,7 @@ shape = SubResource("RectangleShape2D_fcqse")
 polygon = PackedVector2Array(0, 144, 0, 46, 240, 46, 241, 144, 205, 144, 205, 153, 249, 154, 247, 31, -9, 33, -10, 155, 176, 155, 176, 143)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
 
 [node name="BarraVida" parent="CanvasLayer" node_paths=PackedStringArray("personaje") instance=ExtResource("7_2o8qc")]
 personaje = NodePath("../../Jugador")

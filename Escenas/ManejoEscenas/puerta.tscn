@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c10y0n6n5sloe"]
 
-[ext_resource type="Script" uid="uid://bov7qk3wfbhx8" path="res://Scrips/ManejoEscenas/puerta.gd" id="1_cydqo"]
+[ext_resource type="Script" uid="uid://bov7qk3wfbhx8" path="res://Scrips/ManejoEscenas/Puerta.gd" id="1_cydqo"]
 
 [node name="Puerta" type="Area2D"]
 collision_layer = 0

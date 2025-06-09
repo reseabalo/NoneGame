@@ -1,5 +1,5 @@
-class_name HitBox
 extends Area2D
+class_name HitBox
 
 @export var daño: int = 1 : set = set_daño, get = get_daño
 

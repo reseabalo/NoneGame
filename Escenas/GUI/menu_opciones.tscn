@@ -1,20 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://xaruokgo4fo"]
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_fy874"]
-color = Color(0, 0, 0, 0)
-thickness = 3
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_yvdxb"]
-color = Color(0, 0, 0, 0)
-thickness = 3
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_bftl0"]
-color = Color(0, 0, 0, 0)
-thickness = 3
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_vtwhv"]
-color = Color(0, 0, 0, 0)
-thickness = 3
+[ext_resource type="Script" uid="uid://co3i4vad47u1u" path="res://Scrips/GUI/MenuOpciones.gd" id="1_yvdxb"]
+[ext_resource type="Texture2D" uid="uid://buhixensliokg" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesOpciones/VolverNormal.png" id="2_lr1yn"]
+[ext_resource type="Texture2D" uid="uid://c5gw2f1jkkukc" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesOpciones/VolverClick.png" id="3_mgkcs"]
+[ext_resource type="Texture2D" uid="uid://dsuv8rpygugpb" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesOpciones/VolverMouseArriba.png" id="4_hxm77"]
 
 [node name="Menu Opciones" type="Control"]
 layout_mode = 3
@@ -23,75 +12,123 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_yvdxb")
 
 [node name="TabContainer" type="TabContainer" parent="."]
-layout_mode = 2
-offset_right = 640.0
-current_tab = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Sonido" type="VBoxContainer" parent="TabContainer"]
-layout_mode = 2
-metadata/_tab_index = 0
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -174.0
+offset_top = -126.0
+offset_right = 171.0
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
 
-[node name="Master" type="Label" parent="TabContainer/Sonido"]
+[node name="ResolucionesLabel" type="Label" parent="GridContainer"]
 layout_mode = 2
-text = " Sonido"
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 30
+text = "Resoluciones"
 
-[node name="SonidoTotal" type="HSlider" parent="TabContainer/Sonido"]
+[node name="Resoluciones" type="OptionButton" parent="GridContainer"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
+size_flags_vertical = 4
 
-[node name="Separator" type="HSeparator" parent="TabContainer/Sonido"]
+[node name="PantallaCompletaLabel" type="Label" parent="GridContainer"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxLine_fy874")
+theme_override_font_sizes/font_size = 30
+text = "Pantalla Completa"
 
-[node name="SFX" type="Label" parent="TabContainer/Sonido"]
-layout_mode = 2
-text = "SFX"
-horizontal_alignment = 1
-
-[node name="EfectosSonido" type="HSlider" parent="TabContainer/Sonido"]
-layout_mode = 2
-
-[node name="Separator 2" type="HSeparator" parent="TabContainer/Sonido"]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxLine_yvdxb")
-
-[node name="Ambiente2" type="Label" parent="TabContainer/Sonido"]
-layout_mode = 2
-text = "Ambiente"
-horizontal_alignment = 1
-
-[node name="Ambiente" type="HSlider" parent="TabContainer/Sonido"]
-layout_mode = 2
-
-[node name="Separator 3" type="HSeparator" parent="TabContainer/Sonido"]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxLine_bftl0")
-
-[node name="Musica2" type="Label" parent="TabContainer/Sonido"]
-layout_mode = 2
-text = "Musica"
-horizontal_alignment = 1
-
-[node name="Musica" type="HSlider" parent="TabContainer/Sonido"]
-layout_mode = 2
-
-[node name="HSeparator" type="HSeparator" parent="TabContainer/Sonido"]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxLine_vtwhv")
-
-[node name="CheckButton" type="CheckButton" parent="TabContainer/Sonido"]
+[node name="PantallaCompleta" type="CheckButton" parent="GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+
+[node name="MasterLabel" type="Label" parent="GridContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Sonido"
+
+[node name="SonidoTotal" type="HSlider" parent="GridContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+
+[node name="SFXLabel" type="Label" parent="GridContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "SFX"
+
+[node name="EfectosSonido" type="HSlider" parent="GridContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+
+[node name="AmbienteLabel" type="Label" parent="GridContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Ambiente"
+
+[node name="Ambiente" type="HSlider" parent="GridContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+
+[node name="MusicaLabel" type="Label" parent="GridContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Musica"
+
+[node name="Musica" type="HSlider" parent="GridContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+
+[node name="MuteLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Mute"
 
-[node name="Controles" type="VBoxContainer" parent="TabContainer"]
-visible = false
+[node name="Mute" type="CheckButton" parent="GridContainer"]
 layout_mode = 2
-metadata/_tab_index = 1
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 30
 
-[node name="Graficos" type="VBoxContainer" parent="TabContainer"]
-visible = false
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -257.0
+offset_top = -118.0
+offset_right = 247.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 127
+theme_override_constants/margin_right = 127
+theme_override_constants/margin_bottom = 45
+
+[node name="Volver" type="TextureButton" parent="MarginContainer"]
 layout_mode = 2
-metadata/_tab_index = 2
+texture_normal = ExtResource("2_lr1yn")
+texture_pressed = ExtResource("3_mgkcs")
+texture_hover = ExtResource("4_hxm77")
+
+[connection signal="item_selected" from="GridContainer/Resoluciones" to="." method="_on_resoluciones_item_selected"]
+[connection signal="toggled" from="GridContainer/PantallaCompleta" to="." method="_on_pantalla_completa_toggled"]
+[connection signal="pressed" from="MarginContainer/Volver" to="." method="_on_volver_pressed"]

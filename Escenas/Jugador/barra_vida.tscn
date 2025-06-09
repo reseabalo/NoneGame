@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ct45558fs3fqf"]
 
 [ext_resource type="Texture2D" uid="uid://da55n1yayaxj5" path="res://Assets/Entorno/BarraVidayMas.png" id="1_qld2p"]
-[ext_resource type="Script" uid="uid://dlx4juw6r24vs" path="res://Scrips/ManejoVida/barra_vida.gd" id="2_3uwkf"]
+[ext_resource type="Script" uid="uid://dlx4juw6r24vs" path="res://Scrips/ManejoVida/BarraVida.gd" id="2_3uwkf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3uwkf"]
 atlas = ExtResource("1_qld2p")

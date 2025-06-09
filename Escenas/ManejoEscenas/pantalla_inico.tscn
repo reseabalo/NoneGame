@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dli471tb8hdt7"]
+[gd_scene load_steps=12 format=3 uid="uid://dli471tb8hdt7"]
 
-[ext_resource type="Script" uid="uid://bmeyp3oob10nk" path="res://Scrips/ManejoEscenas/pantalla_inico.gd" id="1_6i2i5"]
+[ext_resource type="Script" uid="uid://bmeyp3oob10nk" path="res://Scrips/ManejoEscenas/PantallaInico.gd" id="1_6i2i5"]
 [ext_resource type="Texture2D" uid="uid://dcwrj6roxpgyj" path="res://Assets/Entorno/FrenteUni.png" id="2_i58nd"]
+[ext_resource type="Texture2D" uid="uid://4o56ls7qxys3" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/JugarNormal.png" id="3_6n3ik"]
+[ext_resource type="Texture2D" uid="uid://b2oq8s73h78q0" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/JugarClick.png" id="4_u0x7b"]
+[ext_resource type="Texture2D" uid="uid://bkigt64j4q73m" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/JugarMouseArriba.png" id="5_ooshg"]
+[ext_resource type="Texture2D" uid="uid://nq3piuj16jcl" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/OpcionesNormal.png" id="6_40d5h"]
+[ext_resource type="Texture2D" uid="uid://dnka7k8ech6eu" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/OpcionesClick.png" id="7_mwq6q"]
+[ext_resource type="Texture2D" uid="uid://uiivis158l0d" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/OpcionesMouseArriba.png" id="8_tgyw3"]
+[ext_resource type="Texture2D" uid="uid://cw0bxa2a6ewev" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/SalirNormal.png" id="9_40d5h"]
+[ext_resource type="Texture2D" uid="uid://do207t3mtmi1p" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/SalirClick.png" id="10_mwq6q"]
+[ext_resource type="Texture2D" uid="uid://pj4ve30ocv0o" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/SalirMouseArriba.png" id="11_tgyw3"]
 
 [node name="PantallaInicio" type="Node2D"]
 script = ExtResource("1_6i2i5")
@@ -9,16 +18,11 @@ script = ExtResource("1_6i2i5")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -322.0
-offset_top = -360.0
-offset_right = 318.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 size_flags_horizontal = 4
 texture = ExtResource("2_i58nd")
 
@@ -37,13 +41,26 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Inicio" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="Jugar" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
-text = "Empezar"
+texture_normal = ExtResource("3_6n3ik")
+texture_pressed = ExtResource("4_u0x7b")
+texture_hover = ExtResource("5_ooshg")
 
-[node name="Salir" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="Opciones" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
-text = "Salir"
+texture_normal = ExtResource("6_40d5h")
+texture_pressed = ExtResource("7_mwq6q")
+texture_hover = ExtResource("8_tgyw3")
 
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/Inicio" to="." method="_on_inicio_pressed"]
+[node name="Salir" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("9_40d5h")
+texture_pressed = ExtResource("10_mwq6q")
+texture_hover = ExtResource("11_tgyw3")
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Opciones" to="." method="_on_opciones_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Salir" to="." method="_on_salir_pressed"]
