@@ -31,24 +31,30 @@ func _ready() -> void:
 		add_child(new_escena)
 		new_escena.hide()
 
+#abre el archivo de opciones y lee los datos que este tenga en ese preciso momento
 func leer_opciones():
 	var opciones = {}
 	var archivo = FileAccess.open(opciones_direccion, FileAccess.READ)
+	#si no fue creado el archivo no entrara en este if
 	if archivo:
 		opciones = archivo.get_var()
 		archivo.close()
 	return opciones
 
+#escribe las opciones que allas creado y las guarda en el archivo si existo sino lo crea.
 func escribir_opciones(options):
 	var archivo = FileAccess.open(opciones_direccion, FileAccess.WRITE)
 	archivo.store_var(options)
 	archivo.close()
 
+#se encarga de ver en que resolucion quedo la pantalla 
 func set_modo_pantalla():
 	var modo_ventana = DisplayServer.WINDOW_MODE_WINDOWED
 	var opciones = leer_opciones()
+	#revisa si el archivo de opcione tiene pantalla completa como escrito
 	if opciones.has("pantalla_completa"):
 		modo_ventana = DisplayServer.WINDOW_MODE_FULLSCREEN if opciones.pantalla_completa else DisplayServer.WINDOW_MODE_WINDOWED
+	#el modo de pantalla completa o esta activo settea el modo de pantalla que se alla degado en el menu de opciones
 	DisplayServer.window_set_mode(modo_ventana)
 	escribir_opciones(opciones)
 
@@ -80,7 +86,6 @@ func calculate_window_size():
 		escribir_opciones(options)
 
 
-
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("salir_opciones") and  visibilidad:
 		#ManejoEscenas.ir_a_escena("res://Escenas/GUI/menu_opciones.tscn","ir_oscurecer")
@@ -89,7 +94,6 @@ func _input(_event: InputEvent) -> void:
 		menu_opciones.visible = !menu_opciones.visible
 	else:
 		return
-
 
 func _cambio_visibilidad():
 	var menu_opciones = get_node("Menu Pausa")
