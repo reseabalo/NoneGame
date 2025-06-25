@@ -5,12 +5,13 @@ class_name Jugador
 var direccion_personaje : Vector2
 @onready var vida: Vida = %Vida
 
-const dash_velocidad = 525
+const  dash_velocidad = 1000
 var dashing = false
 var can_dash = true
 var can_atacar = true
 var atacando = false
 var puede_moverse = true
+var ultima_direccion_movimiento :Vector2= Vector2(1.0,0.0)
 
 signal direccion_vista_cambio(viedo_derecha: bool)
 
@@ -35,6 +36,7 @@ func _physics_process(_delta):
 	emit_signal("direccion_vista_cambio",!%AnimatedSprite2D.flip_h)
 	
 	if Input.is_action_just_pressed("dash") and can_dash:
+		velocity = ultima_direccion_movimiento * dash_velocidad
 		dashing = true
 		can_dash = false
 		$Timers/dash_tiempo.start()
@@ -50,11 +52,9 @@ func _physics_process(_delta):
 	if !puede_moverse:
 		velocity = Vector2.ZERO
 		
-	if direccion_personaje and puede_moverse:
-		if dashing:
-			velocity = direccion_personaje * dash_velocidad 
-		else:
-			velocity = direccion_personaje * velocidad_movimiento 
+	if direccion_personaje and puede_moverse and dashing == false:
+		ultima_direccion_movimiento = direccion_personaje
+		velocity = direccion_personaje * velocidad_movimiento 
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO,velocidad_movimiento)
 

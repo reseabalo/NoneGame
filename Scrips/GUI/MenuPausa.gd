@@ -12,5 +12,6 @@ func _on_opciones_pressed() -> void:
 
 #vuelve al menu de inicio
 func _on_salir_pressed() -> void:
-	ManejoEscenas.ir_a_escena("res://Escenas/ManejoEscenas/pantalla_inico.tscn","ir_oscurecer","")
-	GUI._cambio_visibilidad()
+	get_tree().quit()
+	#ManejoEscenas.ir_a_escena("res://Escenas/ManejoEscenas/pantalla_inico.tscn","ir_oscurecer","")
+	#GUI._cambio_visibilidad()

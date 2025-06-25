@@ -15,9 +15,15 @@ func _ready() -> void:
 #si existe un nombre de puerta setea la posicion del personaje a la entrada de esta.
 func _on_nivel_spawn(etiqueta_destinacion: String):
 	#busca la puerta correcta por puede haber varias en un mismo nivel(escena)
+	
+	if etiqueta_destinacion == "SalidaMenu":
+		ManejoEscenas.posicion_en_spawn(ManejoEscenas.jugador_posicion, "")
+		return
+	
 	for puerta in puertas:
 		if puerta.name == etiqueta_destinacion:
 			ManejoEscenas.posicion_en_spawn(puerta.spawn.global_position, puerta.direccion_entrada)
+	return
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("salir_opciones"):

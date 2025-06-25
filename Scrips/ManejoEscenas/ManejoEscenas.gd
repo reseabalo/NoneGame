@@ -39,7 +39,8 @@ func ir_a_escena(escena_direccion: String, tipo_transicion: String, escena_actua
 		
 func salir_menu_opciones(escena_direccion: String,tipo_transicion: String):
 	
-	if escena_direccion != null:			
+	if escena_direccion != null:
+		nombre_puerta_salir = "SalidaMenu"
 		_escena_simultania = load(escena_direccion).instantiate()
 		transicion(tipo_transicion)
 		change_scene_to_node(_escena_simultania)

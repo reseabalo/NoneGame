@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dli471tb8hdt7"]
+[gd_scene load_steps=14 format=3 uid="uid://dli471tb8hdt7"]
 
 [ext_resource type="Script" uid="uid://bmeyp3oob10nk" path="res://Scrips/ManejoEscenas/PantallaInico.gd" id="1_6i2i5"]
 [ext_resource type="Texture2D" uid="uid://dcwrj6roxpgyj" path="res://Assets/Entorno/FrenteUni.png" id="2_i58nd"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://cw0bxa2a6ewev" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/SalirNormal.png" id="9_40d5h"]
 [ext_resource type="Texture2D" uid="uid://do207t3mtmi1p" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/SalirClick.png" id="10_mwq6q"]
 [ext_resource type="Texture2D" uid="uid://pj4ve30ocv0o" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/SalirMouseArriba.png" id="11_tgyw3"]
+[ext_resource type="VideoStream" uid="uid://iuny7wm48ggt" path="res://Assets/Cinematicas/CinematicaDeApertura.ogv" id="12_mwq6q"]
+[ext_resource type="AudioStream" uid="uid://dg5xyot037e4h" path="res://Assets/Audio/INTRO 108 bpm.wav" id="13_tgyw3"]
 
 [node name="PantallaInicio" type="Node2D"]
 script = ExtResource("1_6i2i5")
@@ -61,6 +63,20 @@ texture_normal = ExtResource("9_40d5h")
 texture_pressed = ExtResource("10_mwq6q")
 texture_hover = ExtResource("11_tgyw3")
 
+[node name="Cinematica Apertura" type="VideoStreamPlayer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("12_mwq6q")
+autoplay = true
+
+[node name="Musica Menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_tgyw3")
+
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Opciones" to="." method="_on_opciones_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Salir" to="." method="_on_salir_pressed"]
+[connection signal="finished" from="CanvasLayer/Cinematica Apertura" to="." method="_on_cinematica_apertura_finished"]
