@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjmv6aqsmmns6"]
+
+[ext_resource type="Script" uid="uid://b1abik2w2lh8q" path="res://Scrips/Raiz/raiz_mundo.gd" id="1_0j5ga"]
+[ext_resource type="PackedScene" uid="uid://cu82am0651fpq" path="res://Escenas/Jugador/Jugador.tscn" id="1_knk6m"]
+[ext_resource type="Script" uid="uid://clhr5w8k1xovv" path="res://Scrips/Raiz/juego.gd" id="1_wxjva"]
+[ext_resource type="PackedScene" uid="uid://c88df8p8ic5rl" path="res://Escenas/Niveles/buffet.tscn" id="2_0j5ga"]
+[ext_resource type="PackedScene" uid="uid://df0qyd5xnmufv" path="res://Escenas/Jugador/jugador_2.tscn" id="4_6epp0"]
+[ext_resource type="Script" uid="uid://bera7l2q7yv3c" path="res://Scrips/GuardadoPartida/GuardadoCargadoPartida.gd" id="4_wyvlv"]
+
+[node name="Juego" type="Node2D"]
+script = ExtResource("1_wxjva")
+
+[node name="RaizMundo" type="Node2D" parent="." groups=["eventos_juego"]]
+unique_name_in_owner = true
+script = ExtResource("1_0j5ga")
+
+[node name="Jugador" parent="RaizMundo" instance=ExtResource("1_knk6m")]
+unique_name_in_owner = true
+position = Vector2(1107, 391)
+
+[node name="Jugador 2" parent="RaizMundo" instance=ExtResource("4_6epp0")]
+unique_name_in_owner = true
+position = Vector2(1107, 392)
+
+[node name="buffet" parent="RaizMundo" instance=ExtResource("2_0j5ga")]
+
+[node name="Utilidades" type="Node" parent="."]
+
+[node name="GuardadoCargadoPartida" type="Node" parent="Utilidades"]
+unique_name_in_owner = true
+script = ExtResource("4_wyvlv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -31.0
+offset_right = 35.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "guardar"
+
+[node name="Button2" type="Button" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -206.0
+offset_top = -31.0
+offset_right = -148.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "cargar"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_button_2_pressed"]

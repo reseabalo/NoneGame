@@ -1,15 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://dct0cxufbvshm"]
+[gd_scene load_steps=9 format=3 uid="uid://dct0cxufbvshm"]
 
 [ext_resource type="Script" uid="uid://be8tfeopqdel0" path="res://Scrips/GUI/MenuPausa.gd" id="1_wence"]
-[ext_resource type="Texture2D" uid="uid://nq3piuj16jcl" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/OpcionesNormal.png" id="2_o527e"]
-[ext_resource type="Texture2D" uid="uid://bvwnkdvakqpyd" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesOpciones/ReanudarNormal.png" id="2_obpqu"]
-[ext_resource type="Texture2D" uid="uid://bnnske8hxtsg5" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesOpciones/ReanudarClick.png" id="3_55aee"]
-[ext_resource type="Texture2D" uid="uid://dnka7k8ech6eu" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/OpcionesClick.png" id="3_wcmrk"]
-[ext_resource type="Texture2D" uid="uid://uiivis158l0d" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/OpcionesMouseArriba.png" id="4_7begj"]
-[ext_resource type="Texture2D" uid="uid://sawcsf472w3v" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesOpciones/ReanudarMouseArriba.png" id="4_7v4fu"]
-[ext_resource type="Texture2D" uid="uid://cw0bxa2a6ewev" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/SalirNormal.png" id="5_obpqu"]
-[ext_resource type="Texture2D" uid="uid://do207t3mtmi1p" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/SalirClick.png" id="6_55aee"]
-[ext_resource type="Texture2D" uid="uid://pj4ve30ocv0o" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/SalirMouseArriba.png" id="7_7v4fu"]
+[ext_resource type="Texture2D" uid="uid://dbqbfvf86cpyh" path="res://Assets/GUI/Botones Menu/VOLVER.png" id="2_o527e"]
+[ext_resource type="Texture2D" uid="uid://cqsvesqsvjorj" path="res://Assets/GUI/Botones Menu/VOLVER_Pres.png" id="3_wcmrk"]
+[ext_resource type="Texture2D" uid="uid://btpcpj5k8kge0" path="res://Assets/GUI/Botones Menu/OPCIONES.png" id="4_7begj"]
+[ext_resource type="Texture2D" uid="uid://drr345hywa8vi" path="res://Assets/GUI/Botones Menu/OPCIONES_Pres.png" id="5_obpqu"]
+[ext_resource type="Texture2D" uid="uid://b8ig3m48dy3nh" path="res://Assets/GUI/Botones Menu/SALIR.png" id="6_55aee"]
+[ext_resource type="Texture2D" uid="uid://k50lwf71wl4q" path="res://Assets/GUI/Botones Menu/SALIR_Pres.png" id="7_7v4fu"]
+[ext_resource type="Texture2D" uid="uid://cd0a2hgmnd5ky" path="res://Assets/GUI/Marco.png" id="9_7begj"]
 
 [node name="Menu Pausa" type="Control"]
 layout_mode = 3
@@ -20,7 +18,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wence")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_7begj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,46 +38,35 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Reanudar" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 120)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource("2_obpqu")
-texture_pressed = ExtResource("3_55aee")
-texture_hover = ExtResource("4_7v4fu")
-
-[node name="Opciones" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 120)
+[node name="Reanudar" type="TextureButton" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("2_o527e")
 texture_pressed = ExtResource("3_wcmrk")
-texture_hover = ExtResource("4_7begj")
 
-[node name="Salir" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer"]
+[node name="Opciones" type="TextureButton" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("5_obpqu")
-texture_pressed = ExtResource("6_55aee")
-texture_hover = ExtResource("7_7v4fu")
+texture_normal = ExtResource("4_7begj")
+texture_pressed = ExtResource("5_obpqu")
 
-[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Reanudar" to="." method="_on_reanudar_pressed"]
-[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Opciones" to="." method="_on_opciones_pressed"]
-[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Salir" to="." method="_on_salir_pressed"]
+[node name="Salir" type="TextureButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("6_55aee")
+texture_pressed = ExtResource("7_7v4fu")
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Reanudar" to="." method="_on_reanudar_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Opciones" to="." method="_on_opciones_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Salir" to="." method="_on_salir_pressed"]

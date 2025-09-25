@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://8djthh6swpg4"]
+
+[ext_resource type="Script" uid="uid://co0i732gaelnn" path="res://Scrips/GUI/cargar_partida.gd" id="1_8gjpa"]
+[ext_resource type="Texture2D" uid="uid://dmywkbohksc1n" path="res://Assets/GUI/Partida 1.png" id="2_nypqx"]
+
+[node name="Cargar Partida" type="Node2D"]
+script = ExtResource("1_8gjpa")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -40.0
+offset_right = 150.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_nypqx")
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]

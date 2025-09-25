@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://mbcfcr42n0s3"]
+[gd_scene load_steps=11 format=3 uid="uid://mbcfcr42n0s3"]
 
 [ext_resource type="Script" uid="uid://dkksblnlaigop" path="res://Scrips/ManejoEscenas/PantallaCarga.gd" id="1_j43wm"]
 
@@ -19,6 +19,22 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_ordjp"]
+resource_name = "des_negro"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Panel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_0kbgg"]
 resource_name = "des_oscurecer"
 length = 0.4
@@ -33,6 +49,36 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_j43wm"]
+resource_name = "ir_negro"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Panel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"report_midpoint"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_8eckg"]
@@ -114,7 +160,9 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rhnnw"]
 _data = {
 &"RESET": SubResource("Animation_dqk1q"),
+&"des_negro": SubResource("Animation_ordjp"),
 &"des_oscurecer": SubResource("Animation_0kbgg"),
+&"ir_negro": SubResource("Animation_j43wm"),
 &"ir_oscurecer": SubResource("Animation_8eckg"),
 &"no_des_transicion": SubResource("Animation_rhnnw"),
 &"no_ir_transicion": SubResource("Animation_cct1u")

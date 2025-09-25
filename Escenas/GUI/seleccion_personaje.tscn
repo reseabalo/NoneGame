@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://bffwcoxxx3k20"]
+
+[ext_resource type="Script" uid="uid://22yfju4wv2li" path="res://Scrips/GUI/seleccion_personaje.gd" id="1_7ycly"]
+
+[node name="Seleccion Personaje" type="Node2D"]
+script = ExtResource("1_7ycly")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_right = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pesonaje 1" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Personaje 1"
+
+[node name="Personaje 2" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Personaje 2"
+
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Pesonaje 1" to="." method="_on_pesonaje_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Personaje 2" to="." method="_on_personaje_2_pressed"]

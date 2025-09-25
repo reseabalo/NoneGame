@@ -1,0 +1,650 @@
+[gd_scene load_steps=55 format=3 uid="uid://df0qyd5xnmufv"]
+
+[ext_resource type="Script" uid="uid://yixqcyd4x06m" path="res://Scrips/Jugador/Jugador.gd" id="1_7pajj"]
+[ext_resource type="Script" uid="uid://ce03jsbdwljjk" path="res://Scrips/ManejoVida/Vida.gd" id="2_aokv6"]
+[ext_resource type="Texture2D" uid="uid://bykcwqe4fpgkg" path="res://Assets/Player/Personajes/jere-walk.png" id="3_aokv6"]
+[ext_resource type="Texture2D" uid="uid://dqjbcnli4jcrr" path="res://Assets/Player/Personajes/jere-idle.png" id="4_kwd0w"]
+[ext_resource type="Script" uid="uid://bdjytlsp754wa" path="res://Scrips/ManejoVida/Hitbox.gd" id="4_queqx"]
+[ext_resource type="Script" uid="uid://bw8t5j1fu6e6l" path="res://Scrips/Jugador/CambioColisiones.gd" id="5_7g1hu"]
+[ext_resource type="Script" uid="uid://bramogjdwanei" path="res://Scrips/Jugador/JugadorAnimacion.gd" id="6_ns8lb"]
+[ext_resource type="Script" uid="uid://e8u0byn0dbto" path="res://Scrips/Niveles/Hurtbox.gd" id="7_imsw6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mp40"]
+size = Vector2(15, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_queqx"]
+atlas = ExtResource("3_aokv6")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7g1hu"]
+atlas = ExtResource("3_aokv6")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ns8lb"]
+atlas = ExtResource("3_aokv6")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imsw6"]
+atlas = ExtResource("3_aokv6")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipn71"]
+atlas = ExtResource("3_aokv6")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ihcc"]
+atlas = ExtResource("3_aokv6")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1500"]
+atlas = ExtResource("3_aokv6")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ujb7"]
+atlas = ExtResource("3_aokv6")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bndif"]
+atlas = ExtResource("3_aokv6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyr3f"]
+atlas = ExtResource("3_aokv6")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ymhq"]
+atlas = ExtResource("3_aokv6")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_artkw"]
+atlas = ExtResource("3_aokv6")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bflr"]
+atlas = ExtResource("4_kwd0w")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47ovk"]
+atlas = ExtResource("4_kwd0w")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxshh"]
+atlas = ExtResource("4_kwd0w")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elwtn"]
+atlas = ExtResource("4_kwd0w")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3i2lk"]
+animations = [{
+"frames": [],
+"loop": false,
+"name": &"ataque",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_queqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7g1hu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ns8lb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imsw6")
+}],
+"loop": true,
+"name": &"caminar_abajo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipn71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ihcc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1500")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ujb7")
+}],
+"loop": true,
+"name": &"caminar_arriba",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bndif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyr3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ymhq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_artkw")
+}],
+"loop": false,
+"name": &"caminar_derecha",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bflr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47ovk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxshh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elwtn")
+}],
+"loop": false,
+"name": &"ilde",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s1vfj"]
+size = Vector2(13, 6)
+
+[sub_resource type="Animation" id="Animation_t7qj4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"ilde"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitBox/Golpe:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_xutah"]
+resource_name = "ataque"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"ataque"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitBox/Golpe:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_kwd0w"]
+resource_name = "caminar_abajo"
+length = 0.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"caminar_abajo"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_aokv6"]
+resource_name = "caminar_arriba"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"caminar_arriba"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ovq70"]
+resource_name = "caminar_derecha"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"caminar_derecha"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_queqx"]
+resource_name = "caminar_izquierda"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"caminar_derecha"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_c868g"]
+resource_name = "ilde"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"ilde"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l35hm"]
+_data = {
+&"RESET": SubResource("Animation_t7qj4"),
+&"ataque": SubResource("Animation_xutah"),
+&"caminar_abajo": SubResource("Animation_kwd0w"),
+&"caminar_arriba": SubResource("Animation_aokv6"),
+&"caminar_derecha": SubResource("Animation_ovq70"),
+&"caminar_izquierda": SubResource("Animation_queqx"),
+&"ilde": SubResource("Animation_c868g")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ovq70"]
+animation = &"ataque"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_as36m"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_gjfif"]
+nodes/Animation/node = SubResource("AnimationNodeAnimation_ovq70")
+nodes/Animation/position = Vector2(240, 106.667)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_as36m")
+nodes/TimeScale/position = Vector2(480, 106.667)
+nodes/output/position = Vector2(720, 133.333)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aokv6"]
+animation = &"caminar_izquierda"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kwd0w"]
+animation = &"caminar_derecha"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_queqx"]
+animation = &"caminar_arriba"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7g1hu"]
+animation = &"caminar_abajo"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_7g1hu"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_aokv6")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_kwd0w")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_queqx")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_7g1hu")
+blend_point_3/pos = Vector2(0, 1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xutah"]
+animation = &"ilde"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_ovq70"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_as36m"]
+nodes/Animation/node = SubResource("AnimationNodeAnimation_xutah")
+nodes/Animation/position = Vector2(-186.667, 80)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_ovq70")
+nodes/TimeScale/position = Vector2(133.333, 106.667)
+nodes/output/position = Vector2(400, 80)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p52f3"]
+advance_mode = 2
+advance_expression = "atacando"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_meqng"]
+advance_mode = 2
+advance_expression = "!atacando"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aokv6"]
+advance_mode = 2
+advance_expression = "atacando"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kwd0w"]
+advance_mode = 2
+advance_expression = "!direccion_personaje"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_queqx"]
+advance_mode = 2
+advance_expression = "direccion_personaje"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7g1hu"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_dfbng"]
+states/End/position = Vector2(888, 90.2414)
+states/Start/position = Vector2(125.333, 89.9839)
+states/ataque/node = SubResource("AnimationNodeBlendTree_gjfif")
+states/ataque/position = Vector2(542.666, 191.049)
+states/caminata/node = SubResource("AnimationNodeBlendSpace2D_7g1hu")
+states/caminata/position = Vector2(279.688, 90.6818)
+"states/ilde /node" = SubResource("AnimationNodeBlendTree_as36m")
+"states/ilde /position" = Vector2(279.062, 190.573)
+transitions = ["ilde ", "ataque", SubResource("AnimationNodeStateMachineTransition_p52f3"), "ataque", "ilde ", SubResource("AnimationNodeStateMachineTransition_meqng"), "caminata", "ataque", SubResource("AnimationNodeStateMachineTransition_aokv6"), "caminata", "ilde ", SubResource("AnimationNodeStateMachineTransition_kwd0w"), "ilde ", "caminata", SubResource("AnimationNodeStateMachineTransition_queqx"), "Start", "caminata", SubResource("AnimationNodeStateMachineTransition_7g1hu")]
+graph_offset = Vector2(-219.846, 41.3223)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v328t"]
+size = Vector2(10, 19)
+
+[node name="Jugador 2" type="CharacterBody2D" groups=["Raiz_no_tocar"]]
+z_index = 2
+y_sort_enabled = true
+collision_layer = 7
+script = ExtResource("1_7pajj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+zoom = Vector2(2, 2)
+
+[node name="Vida" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_aokv6")
+vida_maxima = 5
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(-0.5, 16)
+shape = SubResource("RectangleShape2D_4mp40")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_3i2lk")
+animation = &"ilde"
+flip_h = true
+
+[node name="HitBox" type="Area2D" parent="AnimatedSprite2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_queqx")
+metadata/_custom_type_script = "uid://bdjytlsp754wa"
+
+[node name="Golpe" type="CollisionShape2D" parent="AnimatedSprite2D/HitBox"]
+position = Vector2(15, 4)
+shape = SubResource("RectangleShape2D_s1vfj")
+disabled = true
+script = ExtResource("5_7g1hu")
+viendo_posiocion_izquierda = Vector2(-15, 4)
+viendo_posicion_derecha = Vector2(15, 4)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../AnimatedSprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_l35hm")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("%AnimatedSprite2D")
+tree_root = SubResource("AnimationNodeStateMachine_dfbng")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/ataque/TimeScale/scale = 1.5
+parameters/caminata/blend_position = Vector2(-0.0158371, 0.599119)
+"parameters/ilde /TimeScale/scale" = 0.2
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="dash_tiempo" type="Timer" parent="Timers"]
+wait_time = 0.2
+
+[node name="dash_devuelta" type="Timer" parent="Timers"]
+wait_time = 0.5
+
+[node name="ataque_tiempo" type="Timer" parent="Timers"]
+wait_time = 0.3
+
+[node name="ataque_devuelta" type="Timer" parent="Timers"]
+wait_time = 0.4
+
+[node name="JugadorAnimacion" type="Node" parent="." node_paths=PackedStringArray("animation_tree", "juga", "cambio_colisiones")]
+script = ExtResource("6_ns8lb")
+animation_tree = NodePath("../AnimationTree")
+juga = NodePath("..")
+cambio_colisiones = NodePath("../AnimatedSprite2D/HitBox/Golpe")
+
+[node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("vida")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("7_imsw6")
+vida = NodePath("../Vida")
+metadata/_custom_type_script = "uid://e8u0byn0dbto"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 9.5)
+shape = SubResource("RectangleShape2D_v328t")
+
+[connection signal="vida_cambio" from="Vida" to="." method="_on_vida_vida_cambio"]
+[connection signal="vida_termino" from="Vida" to="." method="_on_vida_vida_termino"]
+[connection signal="timeout" from="Timers/dash_tiempo" to="." method="_on_dash_tiempo_timeout"]
+[connection signal="timeout" from="Timers/dash_devuelta" to="." method="_on_dash_devuelta_timeout"]
+[connection signal="timeout" from="Timers/ataque_tiempo" to="." method="_on_ataque_tiempo_timeout"]
+[connection signal="timeout" from="Timers/ataque_devuelta" to="." method="_on_ataque_devuelta_timeout"]

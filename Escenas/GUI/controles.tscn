@@ -1,0 +1,225 @@
+[gd_scene load_steps=6 format=3 uid="uid://lo1mkn8shkuk"]
+
+[ext_resource type="Script" uid="uid://bc1pj3achqqd3" path="res://Scrips/GUI/Controles.gd" id="1_qynen"]
+[ext_resource type="FontFile" uid="uid://dnbte8l6kh62s" path="res://Assets/Fuentes/ari_w9500/ari-w9500-bold.ttf" id="1_uraal"]
+[ext_resource type="Texture2D" uid="uid://dbqbfvf86cpyh" path="res://Assets/GUI/Botones Menu/VOLVER.png" id="2_yu7sa"]
+[ext_resource type="Texture2D" uid="uid://cqsvesqsvjorj" path="res://Assets/GUI/Botones Menu/VOLVER_Pres.png" id="3_qynen"]
+[ext_resource type="Script" uid="uid://b31leutsofxpl" path="res://Scrips/GUI/control_botones.gd" id="3_vwvpl"]
+
+[node name="Controles" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qynen")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03796, 0.0364, 0.13, 1)
+
+[node name="ContenedorControles" type="GridContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="Vacio" type="Label" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+text = "                                                    "
+
+[node name="TeclasPrimarias" type="Label" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uraal")
+text = "Teclas Primarias                   "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TeclasSecundarias" type="Label" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uraal")
+text = "Teclas Secundarias          "
+
+[node name="MoverArriba" type="Label" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uraal")
+text = "Mover Arriba"
+
+[node name="PrincipalMoverArriba" type="Button" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+script = ExtResource("3_vwvpl")
+
+[node name="SecundarioMoverArriba" type="Button" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("3_vwvpl")
+primaria = false
+
+[node name="MoverAbajo" type="Label" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uraal")
+text = "Mover Abajo"
+
+[node name="PrincipalMoverAbajo" type="Button" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("3_vwvpl")
+accion = "mover_abajo"
+
+[node name="SecundarioMoverAbajo" type="Button" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("3_vwvpl")
+accion = "mover_abajo"
+primaria = false
+
+[node name="MoverDerecha" type="Label" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uraal")
+text = "Mover Derecha"
+
+[node name="PrincipalMoverDerecha" type="Button" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("3_vwvpl")
+accion = "mover_derecha"
+
+[node name="SecundarioMoverDerecha" type="Button" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("3_vwvpl")
+accion = "mover_derecha"
+primaria = false
+
+[node name="MoverIzquierda" type="Label" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uraal")
+text = "Mover Izquierda"
+
+[node name="PrincipalMoverIzquierda" type="Button" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("3_vwvpl")
+accion = "mover_izquierda"
+
+[node name="SecundarioMoverIzquierda" type="Button" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("3_vwvpl")
+accion = "mover_izquierda"
+primaria = false
+
+[node name="Dash" type="Label" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uraal")
+text = "Desplazamiento"
+
+[node name="PrincipalDash" type="Button" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("3_vwvpl")
+accion = "desplazamiento"
+
+[node name="SecundarioDash" type="Button" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("3_vwvpl")
+accion = "desplazamiento"
+primaria = false
+
+[node name="Ataque" type="Label" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uraal")
+text = "Ataque"
+
+[node name="PrincipalAtaque" type="Button" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("3_vwvpl")
+accion = "ataque"
+
+[node name="SecundarioAtaque" type="Button" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("3_vwvpl")
+accion = "ataque"
+primaria = false
+
+[node name="Pausa" type="Label" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uraal")
+text = "Pausa"
+
+[node name="PrincipalPausa" type="Button" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("3_vwvpl")
+accion = "pausa"
+
+[node name="SecundarioPausa" type="Button" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("3_vwvpl")
+accion = "pausa"
+primaria = false
+
+[node name="ContenedorRestaurarValoresPredeterminados" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -155.0
+offset_top = -84.0
+offset_right = 155.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="RestaurarValoresPredeterminados" type="Button" parent="CanvasLayer/ContenedorRestaurarValoresPredeterminados"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Restaurar valores predeterminados"
+
+[node name="ContenedorVolver" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Volver" type="TextureButton" parent="CanvasLayer/ContenedorVolver"]
+layout_mode = 2
+size_flags_vertical = 0
+texture_normal = ExtResource("2_yu7sa")
+texture_pressed = ExtResource("3_qynen")
+
+[connection signal="toggled" from="CanvasLayer/ContenedorControles/PrincipalMoverArriba" to="CanvasLayer/ContenedorControles/PrincipalMoverArriba" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ContenedorControles/SecundarioMoverArriba" to="CanvasLayer/ContenedorControles/SecundarioMoverArriba" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ContenedorControles/PrincipalMoverAbajo" to="CanvasLayer/ContenedorControles/PrincipalMoverAbajo" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ContenedorControles/SecundarioMoverAbajo" to="CanvasLayer/ContenedorControles/SecundarioMoverAbajo" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ContenedorControles/PrincipalMoverDerecha" to="CanvasLayer/ContenedorControles/PrincipalMoverDerecha" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ContenedorControles/SecundarioMoverDerecha" to="CanvasLayer/ContenedorControles/SecundarioMoverDerecha" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ContenedorControles/PrincipalMoverIzquierda" to="CanvasLayer/ContenedorControles/PrincipalMoverIzquierda" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ContenedorControles/SecundarioMoverIzquierda" to="CanvasLayer/ContenedorControles/SecundarioMoverIzquierda" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ContenedorControles/PrincipalDash" to="CanvasLayer/ContenedorControles/PrincipalDash" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ContenedorControles/SecundarioDash" to="CanvasLayer/ContenedorControles/SecundarioDash" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ContenedorControles/PrincipalAtaque" to="CanvasLayer/ContenedorControles/PrincipalAtaque" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ContenedorControles/SecundarioAtaque" to="CanvasLayer/ContenedorControles/SecundarioAtaque" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ContenedorControles/PrincipalPausa" to="CanvasLayer/ContenedorControles/PrincipalPausa" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ContenedorControles/SecundarioPausa" to="CanvasLayer/ContenedorControles/SecundarioPausa" method="_on_toggled"]
+[connection signal="pressed" from="CanvasLayer/ContenedorRestaurarValoresPredeterminados/RestaurarValoresPredeterminados" to="." method="_on_restaurar_valores_predeterminados_pressed"]
+[connection signal="pressed" from="CanvasLayer/ContenedorVolver/Volver" to="." method="_on_texture_button_pressed"]

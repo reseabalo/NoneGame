@@ -6,6 +6,7 @@ extends Node
 @onready var jugador: Jugador = get_owner()
 
 func _ready() -> void:
+	animation_tree.active = true
 	juga.connect("direccion_vista_cambio", _on_jugador_viendo_direccion_cambio)
 
 
@@ -18,7 +19,7 @@ func _physics_process(_delta: float) -> void:
 	if !ilde:
 		ultima_direccion_vista = jugador.direccion_personaje.normalized()
 	
-	animation_tree.set("parameters/caminata",ultima_direccion_vista)
+	animation_tree.set("parameters/caminata/blend_position",ultima_direccion_vista)
 	animation_tree.set("parameters/ilde",ultima_direccion_vista)
 	animation_tree.set("parameters/ataque",ultima_direccion_vista)
 	

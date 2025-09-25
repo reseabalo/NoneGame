@@ -26,6 +26,6 @@ func _on_nivel_spawn(etiqueta_destinacion: String):
 	return
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("salir_opciones"):
+	if Input.is_action_just_pressed("pausa"):
 		ManejoEscenas.jugador_posicion = jugador.global_position
 		

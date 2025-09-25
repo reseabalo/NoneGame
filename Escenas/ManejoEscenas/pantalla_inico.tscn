@@ -1,17 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://dli471tb8hdt7"]
+[gd_scene load_steps=11 format=3 uid="uid://dli471tb8hdt7"]
 
 [ext_resource type="Script" uid="uid://bmeyp3oob10nk" path="res://Scrips/ManejoEscenas/PantallaInico.gd" id="1_6i2i5"]
-[ext_resource type="Texture2D" uid="uid://dcwrj6roxpgyj" path="res://Assets/Entorno/FrenteUni.png" id="2_i58nd"]
-[ext_resource type="Texture2D" uid="uid://4o56ls7qxys3" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/JugarNormal.png" id="3_6n3ik"]
-[ext_resource type="Texture2D" uid="uid://b2oq8s73h78q0" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/JugarClick.png" id="4_u0x7b"]
-[ext_resource type="Texture2D" uid="uid://bkigt64j4q73m" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/JugarMouseArriba.png" id="5_ooshg"]
-[ext_resource type="Texture2D" uid="uid://nq3piuj16jcl" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/OpcionesNormal.png" id="6_40d5h"]
-[ext_resource type="Texture2D" uid="uid://dnka7k8ech6eu" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/OpcionesClick.png" id="7_mwq6q"]
-[ext_resource type="Texture2D" uid="uid://uiivis158l0d" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/OpcionesMouseArriba.png" id="8_tgyw3"]
-[ext_resource type="Texture2D" uid="uid://cw0bxa2a6ewev" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/SalirNormal.png" id="9_40d5h"]
-[ext_resource type="Texture2D" uid="uid://do207t3mtmi1p" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/SalirClick.png" id="10_mwq6q"]
-[ext_resource type="Texture2D" uid="uid://pj4ve30ocv0o" path="res://Assets/GUI/ventanadeinicio-y-menupausa/BotonesMenu/SalirMouseArriba.png" id="11_tgyw3"]
-[ext_resource type="VideoStream" uid="uid://iuny7wm48ggt" path="res://Assets/Cinematicas/CinematicaDeApertura.ogv" id="12_mwq6q"]
+[ext_resource type="Texture2D" uid="uid://fi88w82veykf" path="res://Assets/GUI/Botones Menu/NUEVAPARTIDA.png" id="3_40d5h"]
+[ext_resource type="Texture2D" uid="uid://df3u3fqrreegy" path="res://Assets/GUI/Botones Menu/NUEVAPARTIDA_Pres.png" id="4_mwq6q"]
+[ext_resource type="Texture2D" uid="uid://d3iruxlbyn638" path="res://Assets/GUI/Botones Menu/CARGARPARTIDA.png" id="5_tgyw3"]
+[ext_resource type="Texture2D" uid="uid://4lj5bi0ijp4k" path="res://Assets/GUI/Botones Menu/CARGARPARTIDA_Pres.png" id="6_jy38p"]
+[ext_resource type="Texture2D" uid="uid://btpcpj5k8kge0" path="res://Assets/GUI/Botones Menu/OPCIONES.png" id="7_bmeen"]
+[ext_resource type="Texture2D" uid="uid://drr345hywa8vi" path="res://Assets/GUI/Botones Menu/OPCIONES_Pres.png" id="8_84rd8"]
+[ext_resource type="Texture2D" uid="uid://b8ig3m48dy3nh" path="res://Assets/GUI/Botones Menu/SALIR.png" id="9_8movm"]
+[ext_resource type="Texture2D" uid="uid://k50lwf71wl4q" path="res://Assets/GUI/Botones Menu/SALIR_Pres.png" id="10_xgnr6"]
 [ext_resource type="AudioStream" uid="uid://dg5xyot037e4h" path="res://Assets/Audio/INTRO 108 bpm.wav" id="13_tgyw3"]
 
 [node name="PantallaInicio" type="Node2D"]
@@ -19,14 +16,13 @@ script = ExtResource("1_6i2i5")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-texture = ExtResource("2_i58nd")
+color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 8
@@ -44,39 +40,33 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Jugar" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
-texture_normal = ExtResource("3_6n3ik")
-texture_pressed = ExtResource("4_u0x7b")
-texture_hover = ExtResource("5_ooshg")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_40d5h")
+texture_pressed = ExtResource("4_mwq6q")
+
+[node name="CargarPartida" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_tgyw3")
+texture_pressed = ExtResource("6_jy38p")
 
 [node name="Opciones" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
-texture_normal = ExtResource("6_40d5h")
-texture_pressed = ExtResource("7_mwq6q")
-texture_hover = ExtResource("8_tgyw3")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("7_bmeen")
+texture_pressed = ExtResource("8_84rd8")
 
 [node name="Salir" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("9_40d5h")
-texture_pressed = ExtResource("10_mwq6q")
-texture_hover = ExtResource("11_tgyw3")
-
-[node name="Cinematica Apertura" type="VideoStreamPlayer" parent="CanvasLayer"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stream = ExtResource("12_mwq6q")
-autoplay = true
+texture_normal = ExtResource("9_8movm")
+texture_pressed = ExtResource("10_xgnr6")
 
 [node name="Musica Menu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_tgyw3")
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/CargarPartida" to="." method="_on_cargar_partida_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Opciones" to="." method="_on_opciones_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Salir" to="." method="_on_salir_pressed"]
-[connection signal="finished" from="CanvasLayer/Cinematica Apertura" to="." method="_on_cinematica_apertura_finished"]

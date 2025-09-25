@@ -7,7 +7,7 @@ func _on_reanudar_pressed() -> void:
 
 #va al menu de opciones y invisibiliza de menu de pausa
 func _on_opciones_pressed() -> void:
-	ManejoEscenas.ir_a_escena("res://Escenas/GUI/menu_opciones.tscn","ir_oscurecer","")
+	ManejoEscenas.ir_a_escena("res://Escenas/GUI/Menu Opciones.tscn","ir_oscurecer","")
 	GUI._cambio_visibilidad()
 
 #vuelve al menu de inicio

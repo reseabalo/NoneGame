@@ -1,5 +1,9 @@
 extends CanvasLayer
 
+const VOLUMEN_GENERAL_PREDETERMINADO := 1.0
+const VOLUMEN_MUSICA_PREDETERMINADO := 1.0
+const VOLUMEN_SFX_PREDETERMINADO:= 1.0
+
 var gui_componentes : Array = [
 	"res://Escenas/GUI/menu_Pausa.tscn"
 ]
@@ -12,7 +16,8 @@ const opciones_direccion: String = "user://opciones.data"
 
 #Lista con las resoluciones aplicabes, se pueden agregar mas de ser necesario
 var resoluciones_lista : Array = [
-	{ "ancho": 640,  "alto": 360 },
+	{ "ancho": 640,  "alto": 480 },
+	{ "ancho": 800,  "alto": 600 },
 	{ "ancho": 1024, "alto": 768 },
 	{ "ancho": 1280, "alto": 720 },
 	{ "ancho": 1366, "alto": 768 },
@@ -87,7 +92,7 @@ func calculate_window_size():
 
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("salir_opciones") and  visibilidad:
+	if Input.is_action_just_pressed("pausa") and  visibilidad:
 		#ManejoEscenas.ir_a_escena("res://Escenas/GUI/menu_opciones.tscn","ir_oscurecer")
 		#get_tree().change_scene_to_file("res://Escenas/GUI/menu_Pausa.tscn")
 		var menu_opciones = get_node("Menu Pausa")
@@ -98,3 +103,16 @@ func _input(_event: InputEvent) -> void:
 func _cambio_visibilidad():
 	var menu_opciones = get_node("Menu Pausa")
 	menu_opciones.visible = !menu_opciones.visible
+
+
+func get_master_volumen():
+	var options = leer_opciones()
+	return options.master_volume if options.has("master_volume") else VOLUMEN_GENERAL_PREDETERMINADO
+
+func get_musica_volumen():
+	var options = leer_opciones()
+	return options.music_volume if options.has("musica_volume") else VOLUMEN_MUSICA_PREDETERMINADO
+
+func get_sfx_volumen():
+	var options = leer_opciones()
+	return options.sfx_volume if options.has("sfx_volume") else VOLUMEN_SFX_PREDETERMINADO

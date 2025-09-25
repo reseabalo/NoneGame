@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://xaruokgo4fo"]
+
+[ext_resource type="Script" uid="uid://co3i4vad47u1u" path="res://Scrips/GUI/Video.gd" id="1_yvdxb"]
+[ext_resource type="Texture2D" uid="uid://dbqbfvf86cpyh" path="res://Assets/GUI/Botones Menu/VOLVER.png" id="2_ajnkj"]
+[ext_resource type="FontFile" uid="uid://dnbte8l6kh62s" path="res://Assets/Fuentes/ari_w9500/ari-w9500-bold.ttf" id="2_xuylq"]
+[ext_resource type="Texture2D" uid="uid://cqsvesqsvjorj" path="res://Assets/GUI/Botones Menu/VOLVER_Pres.png" id="3_xuylq"]
+
+[node name="Video" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yvdxb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03796, 0.0364, 0.13, 1)
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 45.0
+offset_right = 240.0
+offset_bottom = 315.0
+grow_horizontal = 2
+columns = 2
+
+[node name="ResolucionesLabel" type="Label" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_xuylq")
+text = "Resoluciones"
+
+[node name="Resoluciones" type="OptionButton" parent="CanvasLayer/GridContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="PantallaCompletaLabel" type="Label" parent="CanvasLayer/GridContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_xuylq")
+text = "Pantalla Completa"
+
+[node name="PantallaCompleta" type="CheckButton" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -90.0
+offset_right = 240.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Volver" type="TextureButton" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("2_ajnkj")
+texture_pressed = ExtResource("3_xuylq")
+
+[connection signal="item_selected" from="CanvasLayer/GridContainer/Resoluciones" to="." method="_on_resoluciones_item_selected"]
+[connection signal="toggled" from="CanvasLayer/GridContainer/PantallaCompleta" to="." method="_on_pantalla_completa_toggled"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Volver" to="." method="_on_volver_pressed"]

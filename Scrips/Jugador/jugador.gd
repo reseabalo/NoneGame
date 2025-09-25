@@ -17,9 +17,6 @@ signal direccion_vista_cambio(viedo_derecha: bool)
 
 func _ready() -> void:
 	ManejoEscenas.trigger_en_el_spawn_jugador.connect(_on_spawn)
-	if ManejoEscenas.get_dato() > 0:
-		ManejoEscenas.escena_cambio.connect(_cambiar_vida)
-
 
 func _physics_process(_delta):
 	
@@ -35,7 +32,7 @@ func _physics_process(_delta):
 		
 	emit_signal("direccion_vista_cambio",!%AnimatedSprite2D.flip_h)
 	
-	if Input.is_action_just_pressed("dash") and can_dash:
+	if Input.is_action_just_pressed("desplazamiento") and can_dash:
 		velocity = ultima_direccion_movimiento * dash_velocidad
 		dashing = true
 		can_dash = false
