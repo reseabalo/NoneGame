@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var guardado_cargado_partida: Node = %GuardadoCargadoPartida
+@onready var raiz_mundo: RaizMundo = %RaizMundo
 
 func _ready() -> void:
 	GUI.visibilidad = true
@@ -12,4 +13,5 @@ func _on_button_pressed() -> void:
 
 
 func _on_button_2_pressed() -> void:
-	guardado_cargado_partida.cargar_partida()
+	await raiz_mundo.cargar_nivel_async("res://Escenas/Niveles/sotano.tscn")
+	#guardado_cargado_partida.cargar_partida()

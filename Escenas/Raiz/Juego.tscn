@@ -10,7 +10,7 @@
 [node name="Juego" type="Node2D"]
 script = ExtResource("1_wxjva")
 
-[node name="RaizMundo" type="Node2D" parent="." groups=["eventos_juego"]]
+[node name="RaizMundo" type="Node2D" parent="." groups=["Jugador", "eventos_juego"]]
 unique_name_in_owner = true
 script = ExtResource("1_0j5ga")
 

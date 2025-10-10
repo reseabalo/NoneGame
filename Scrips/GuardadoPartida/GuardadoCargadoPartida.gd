@@ -4,40 +4,53 @@ extends Node
 
 var datos: Dictionary = {
 	"direccion_nivel": null,
-	"posicion_jugador_x": null,
-	"posicion_jugador_y": null,
-	"vida_jugador": null,
-	"jugador_seleccionado": null,
-	"jugador_seleccionado_escena": null
 }
+
+var lista_datos: Array
 
 var PartidaUnoDireccion : String =  "user://PartidaUno.json"
 
 func guardar_partida():
 	var archivo = FileAccess.open(PartidaUnoDireccion,FileAccess.WRITE)
+	lista_datos.clear()
 	
 	datos["direccion_nivel"] = raiz_mundo.get_direccion_nivel_actual()
+	lista_datos.append(datos)
 	
-	get_tree().call_group("eventos_juego","en_guardado_partida",datos)
+	get_tree().call_group("eventos_juego","en_guardado_partida",lista_datos)
 	
-	var json = JSON.stringify(datos)
+	var json = JSON.stringify(lista_datos)
 	
 	archivo.store_string(json)
 	archivo.close()
 	
 func cargar_partida():
+	var dato_cargar:Dictionary
 	var archivo = FileAccess.open(PartidaUnoDireccion,FileAccess.READ)
 	
 	var json = archivo.get_as_text()
 	var datos_guardados = JSON.parse_string(json)
+		
+	for dato in datos_guardados:
+		if dato.has("direccion_nivel"):
+			dato_cargar = dato
+			break
 	
-	await raiz_mundo.cargar_nivel_async(datos_guardados["direccion_nivel"])
+	await raiz_mundo.cargar_nivel_async(dato_cargar["direccion_nivel"])
 	
-	get_tree().call_group("eventos_juego","antes_cargar_partida",datos_guardados)
+	get_tree().call_group("eventos_juego","antes_cargar_partida")
 	
-	#var escena := load(datos_guardados["jugador_seleccionado_escena"]) as PackedScene
-	#var nodo_restaurado = escena.instantiate()
-	#raiz_mundo.add_child(nodo_restaurado)
-	get_tree().call_group("eventos_juego","en_cargado_partida",datos_guardados)
+	for dato in datos_guardados:
+		if dato.has("escena"):
+			var escena := load(dato["escena"]) as PackedScene
+			var nodo_restaurado = escena.instantiate()
+			
+			raiz_mundo.add_child(nodo_restaurado)
+			
+			if nodo_restaurado.has_method("en_cargado_partida"):
+				nodo_restaurado.en_cargado_partida(dato)
+	
+	get_tree().call_group("Jugador","en_cargado_partida",datos_guardados)
+	
 	ManejoEscenas.terminar_transicion()
 	archivo.close()

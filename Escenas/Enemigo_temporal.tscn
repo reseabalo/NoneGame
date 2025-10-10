@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4i3w31i0ml0"]
+
+[ext_resource type="Script" uid="uid://dii7yq5wgicwx" path="res://Escenas/enemigo_temporal.gd" id="1_2ljd2"]
+[ext_resource type="Texture2D" uid="uid://63kk8vnvd2yw" path="res://enemigo_provisional.png" id="1_lw372"]
+[ext_resource type="Script" uid="uid://e8u0byn0dbto" path="res://Scrips/Niveles/Hurtbox.gd" id="2_2ljd2"]
+[ext_resource type="Script" uid="uid://ce03jsbdwljjk" path="res://Scrips/ManejoVida/Vida.gd" id="3_eit11"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqtuq"]
+size = Vector2(32, 32)
+
+[node name="Enemigo" type="Node2D" groups=["enemigo", "eventos_juego"]]
+script = ExtResource("1_2ljd2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lw372")
+
+[node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("vida")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_2ljd2")
+vida = NodePath("../Vida_enemigo")
+metadata/_custom_type_script = "uid://e8u0byn0dbto"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_aqtuq")
+
+[node name="Vida_enemigo" type="Node" parent="."]
+script = ExtResource("3_eit11")
+vida_maxima = 2
+metadata/_custom_type_script = "uid://ce03jsbdwljjk"
+
+[connection signal="vida_termino" from="Vida_enemigo" to="." method="_on_vida_enemigo_vida_termino"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://8djthh6swpg4"]
 
 [ext_resource type="Script" uid="uid://co0i732gaelnn" path="res://Scrips/GUI/cargar_partida.gd" id="1_8gjpa"]
-[ext_resource type="Texture2D" uid="uid://dmywkbohksc1n" path="res://Assets/GUI/Partida 1.png" id="2_nypqx"]
+[ext_resource type="Texture2D" uid="uid://dmywkbohksc1n" path="res://Assets/GUI/Guardar y Cargar partida/Partida 1.png" id="2_nypqx"]
 
 [node name="Cargar Partida" type="Node2D"]
 script = ExtResource("1_8gjpa")

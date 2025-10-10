@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://dct0cxufbvshm"]
 
 [ext_resource type="Script" uid="uid://be8tfeopqdel0" path="res://Scrips/GUI/MenuPausa.gd" id="1_wence"]
-[ext_resource type="Texture2D" uid="uid://dbqbfvf86cpyh" path="res://Assets/GUI/Botones Menu/VOLVER.png" id="2_o527e"]
-[ext_resource type="Texture2D" uid="uid://cqsvesqsvjorj" path="res://Assets/GUI/Botones Menu/VOLVER_Pres.png" id="3_wcmrk"]
-[ext_resource type="Texture2D" uid="uid://btpcpj5k8kge0" path="res://Assets/GUI/Botones Menu/OPCIONES.png" id="4_7begj"]
-[ext_resource type="Texture2D" uid="uid://drr345hywa8vi" path="res://Assets/GUI/Botones Menu/OPCIONES_Pres.png" id="5_obpqu"]
-[ext_resource type="Texture2D" uid="uid://b8ig3m48dy3nh" path="res://Assets/GUI/Botones Menu/SALIR.png" id="6_55aee"]
-[ext_resource type="Texture2D" uid="uid://k50lwf71wl4q" path="res://Assets/GUI/Botones Menu/SALIR_Pres.png" id="7_7v4fu"]
-[ext_resource type="Texture2D" uid="uid://cd0a2hgmnd5ky" path="res://Assets/GUI/Marco.png" id="9_7begj"]
+[ext_resource type="Texture2D" uid="uid://dbqbfvf86cpyh" path="res://Assets/GUI/Botones Menus/VOLVER.png" id="2_o527e"]
+[ext_resource type="Texture2D" uid="uid://cqsvesqsvjorj" path="res://Assets/GUI/Botones Menus/VOLVER_Pres.png" id="3_wcmrk"]
+[ext_resource type="Texture2D" uid="uid://btpcpj5k8kge0" path="res://Assets/GUI/Botones Menus/OPCIONES.png" id="4_7begj"]
+[ext_resource type="Texture2D" uid="uid://drr345hywa8vi" path="res://Assets/GUI/Botones Menus/OPCIONES_Pres.png" id="5_obpqu"]
+[ext_resource type="Texture2D" uid="uid://b8ig3m48dy3nh" path="res://Assets/GUI/Botones Menus/SALIR.png" id="6_55aee"]
+[ext_resource type="Texture2D" uid="uid://k50lwf71wl4q" path="res://Assets/GUI/Botones Menus/SALIR_Pres.png" id="7_7v4fu"]
+[ext_resource type="Texture2D" uid="uid://cd0a2hgmnd5ky" path="res://Assets/GUI/Menu Pausa/Marco.png" id="9_7begj"]
 
 [node name="Menu Pausa" type="Control"]
 layout_mode = 3
@@ -28,6 +28,7 @@ offset_left = -100.0
 offset_right = 100.0
 grow_horizontal = 2
 grow_vertical = 2
+rotation = 0.000804355
 texture = ExtResource("9_7begj")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

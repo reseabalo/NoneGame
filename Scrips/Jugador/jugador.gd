@@ -13,7 +13,7 @@ var atacando = false
 var puede_moverse = true
 var ultima_direccion_movimiento :Vector2= Vector2(1.0,0.0)
 
-signal direccion_vista_cambio(viedo_derecha: bool)
+signal direccion_vista_cambio(viedo_derecha: bool, direccion: Vector2 )
 
 func _ready() -> void:
 	ManejoEscenas.trigger_en_el_spawn_jugador.connect(_on_spawn)
@@ -30,7 +30,7 @@ func _physics_process(_delta):
 	elif direccion_personaje.x < 0: 
 		%AnimatedSprite2D.flip_h = true
 		
-	emit_signal("direccion_vista_cambio",!%AnimatedSprite2D.flip_h)
+	emit_signal("direccion_vista_cambio",direccion_personaje)
 	
 	if Input.is_action_just_pressed("desplazamiento") and can_dash:
 		velocity = ultima_direccion_movimiento * dash_velocidad
@@ -54,7 +54,6 @@ func _physics_process(_delta):
 		velocity = direccion_personaje * velocidad_movimiento 
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO,velocidad_movimiento)
-
 	move_and_slide()
 
 #para parar el dash
@@ -75,7 +74,6 @@ func _on_ataque_devuelta_timeout():
 func _on_spawn(posicion: Vector2, _direccion: String):
 	global_position = posicion
 
-
 func _on_vida_vida_termino() -> void:
 	queue_free()
 	ManejoEscenas.transicion("ir_oscurecer")
@@ -84,6 +82,3 @@ func _on_vida_vida_termino() -> void:
 	
 func _cambiar_vida(diff: int):
 	%Vida.set_vida(diff)
-
-func _on_vida_vida_cambio(_diff: int) -> void:
-	ManejoEscenas.set_dato(%Vida.get_vida())

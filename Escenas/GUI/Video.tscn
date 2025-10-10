@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://xaruokgo4fo"]
 
 [ext_resource type="Script" uid="uid://co3i4vad47u1u" path="res://Scrips/GUI/Video.gd" id="1_yvdxb"]
-[ext_resource type="Texture2D" uid="uid://dbqbfvf86cpyh" path="res://Assets/GUI/Botones Menu/VOLVER.png" id="2_ajnkj"]
+[ext_resource type="Texture2D" uid="uid://dbqbfvf86cpyh" path="res://Assets/GUI/Botones Menus/VOLVER.png" id="2_ajnkj"]
 [ext_resource type="FontFile" uid="uid://dnbte8l6kh62s" path="res://Assets/Fuentes/ari_w9500/ari-w9500-bold.ttf" id="2_xuylq"]
-[ext_resource type="Texture2D" uid="uid://cqsvesqsvjorj" path="res://Assets/GUI/Botones Menu/VOLVER_Pres.png" id="3_xuylq"]
+[ext_resource type="Texture2D" uid="uid://cqsvesqsvjorj" path="res://Assets/GUI/Botones Menus/VOLVER_Pres.png" id="3_xuylq"]
 
 [node name="Video" type="Control"]
 layout_mode = 3

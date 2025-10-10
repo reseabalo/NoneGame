@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://d052on3xpr2hv" path="res://Scrips/GUI/Audio.gd" id="1_18q8e"]
 [ext_resource type="FontFile" uid="uid://dnbte8l6kh62s" path="res://Assets/Fuentes/ari_w9500/ari-w9500-bold.ttf" id="1_wybht"]
-[ext_resource type="Texture2D" uid="uid://dbqbfvf86cpyh" path="res://Assets/GUI/Botones Menu/VOLVER.png" id="2_0og68"]
-[ext_resource type="Texture2D" uid="uid://cqsvesqsvjorj" path="res://Assets/GUI/Botones Menu/VOLVER_Pres.png" id="3_18q8e"]
+[ext_resource type="Texture2D" uid="uid://dbqbfvf86cpyh" path="res://Assets/GUI/Botones Menus/VOLVER.png" id="2_0og68"]
+[ext_resource type="Texture2D" uid="uid://cqsvesqsvjorj" path="res://Assets/GUI/Botones Menus/VOLVER_Pres.png" id="3_18q8e"]
 
 [node name="Audio" type="Control"]
 layout_mode = 3

@@ -1,19 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8ejwmeucqc4p"]
+[gd_scene load_steps=10 format=3 uid="uid://c8ejwmeucqc4p"]
 
 [ext_resource type="Script" uid="uid://b3ryks122yjsh" path="res://Scrips/GUI/menu_opciones.gd" id="1_2fv33"]
-[ext_resource type="Texture2D" uid="uid://d3dur60kyismf" path="res://Assets/GUI/Botones Menu/AUDIO.png" id="1_xlulq"]
-[ext_resource type="Texture2D" uid="uid://dhemlt6067qj1" path="res://Assets/GUI/Botones Menu/AUDIO_Pres.png" id="2_2fv33"]
-[ext_resource type="Texture2D" uid="uid://drr73hpbsysjh" path="res://Assets/GUI/fondo.png" id="2_ntjtx"]
-[ext_resource type="Texture2D" uid="uid://bv6115nn7qgr1" path="res://Assets/GUI/Botones Menu/VIDEO.png" id="3_ntjtx"]
-[ext_resource type="Texture2D" uid="uid://b8wogfhybcp25" path="res://Assets/GUI/Botones Menu/VIDEO_Pres.png" id="4_y3drf"]
-[ext_resource type="Texture2D" uid="uid://hcni5js81ata" path="res://Assets/GUI/Botones Menu/CONTROLES.png" id="5_doma5"]
-[ext_resource type="Texture2D" uid="uid://cgaswpvvwa3xj" path="res://Assets/GUI/Botones Menu/CONTROLES_Pres.png" id="6_nt6tu"]
-[ext_resource type="Texture2D" uid="uid://dbqbfvf86cpyh" path="res://Assets/GUI/Botones Menu/VOLVER.png" id="7_jfcfj"]
-[ext_resource type="Texture2D" uid="uid://cqsvesqsvjorj" path="res://Assets/GUI/Botones Menu/VOLVER_Pres.png" id="8_bsfpt"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y3drf"]
-texture = ExtResource("2_ntjtx")
-region_rect = Rect2(0, 0, 32, 32)
+[ext_resource type="Texture2D" uid="uid://d3dur60kyismf" path="res://Assets/GUI/Botones Menus/AUDIO.png" id="1_xlulq"]
+[ext_resource type="Texture2D" uid="uid://dhemlt6067qj1" path="res://Assets/GUI/Botones Menus/AUDIO_Pres.png" id="2_2fv33"]
+[ext_resource type="Texture2D" uid="uid://bv6115nn7qgr1" path="res://Assets/GUI/Botones Menus/VIDEO.png" id="3_ntjtx"]
+[ext_resource type="Texture2D" uid="uid://b8wogfhybcp25" path="res://Assets/GUI/Botones Menus/VIDEO_Pres.png" id="4_y3drf"]
+[ext_resource type="Texture2D" uid="uid://hcni5js81ata" path="res://Assets/GUI/Botones Menus/CONTROLES.png" id="5_doma5"]
+[ext_resource type="Texture2D" uid="uid://cgaswpvvwa3xj" path="res://Assets/GUI/Botones Menus/CONTROLES_Pres.png" id="6_nt6tu"]
+[ext_resource type="Texture2D" uid="uid://dbqbfvf86cpyh" path="res://Assets/GUI/Botones Menus/VOLVER.png" id="7_jfcfj"]
+[ext_resource type="Texture2D" uid="uid://cqsvesqsvjorj" path="res://Assets/GUI/Botones Menus/VOLVER_Pres.png" id="8_bsfpt"]
 
 [node name="MenuOpciones" type="Control"]
 layout_mode = 3
@@ -32,15 +27,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-
-[node name="Panel" type="Panel" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 236.0
-offset_top = 36.0
-offset_right = 404.0
-offset_bottom = 331.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_y3drf")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

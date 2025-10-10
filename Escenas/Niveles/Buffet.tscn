@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=4 uid="uid://c88df8p8ic5rl"]
+[gd_scene load_steps=22 format=4 uid="uid://c88df8p8ic5rl"]
 
 [ext_resource type="Texture2D" uid="uid://bathdd0bs18xw" path="res://Assets/Entorno/Mapa/Mapas-Ambiente.png" id="1_i4mtw"]
 [ext_resource type="Texture2D" uid="uid://diamx0sjgtkdi" path="res://Assets/Entorno/Mapa/Objetos-1.png" id="2_bssmd"]
+[ext_resource type="PackedScene" uid="uid://b4i3w31i0ml0" path="res://Escenas/Enemigo_temporal.tscn" id="3_ha5qo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bssmd"]
 texture = ExtResource("1_i4mtw")
@@ -1951,3 +1952,12 @@ tile_set = SubResource("TileSet_6dyhn")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(-432, 480, 0, 478, 0, 544, 129, 544, 129, 607, 399, 608, 399, 702, 671, 704, 673, 512, 1153, 512, 1152, 356, 529, 354, 529, 142, 1153, 143, 1151, -9, 431, -6, 432, 368, 399, 367, 399, 457, 351, 457, 352, 491, 208, 489, 208, 422, 48, 422, 47, 322, -441, 315, -440, 273, 699, -116, 1166, -22, 1174, 567, 535, 751, -453, 505, -452, 318, -432, 319)
+
+[node name="Enemigo" parent="." instance=ExtResource("3_ha5qo")]
+position = Vector2(931, 398)
+
+[node name="Enemigo2" parent="." instance=ExtResource("3_ha5qo")]
+position = Vector2(855, 455)
+
+[node name="Enemigo3" parent="." instance=ExtResource("3_ha5qo")]
+position = Vector2(775, 407)

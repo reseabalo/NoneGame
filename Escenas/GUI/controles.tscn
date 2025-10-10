@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bc1pj3achqqd3" path="res://Scrips/GUI/Controles.gd" id="1_qynen"]
 [ext_resource type="FontFile" uid="uid://dnbte8l6kh62s" path="res://Assets/Fuentes/ari_w9500/ari-w9500-bold.ttf" id="1_uraal"]
-[ext_resource type="Texture2D" uid="uid://dbqbfvf86cpyh" path="res://Assets/GUI/Botones Menu/VOLVER.png" id="2_yu7sa"]
-[ext_resource type="Texture2D" uid="uid://cqsvesqsvjorj" path="res://Assets/GUI/Botones Menu/VOLVER_Pres.png" id="3_qynen"]
+[ext_resource type="Texture2D" uid="uid://dbqbfvf86cpyh" path="res://Assets/GUI/Botones Menus/VOLVER.png" id="2_yu7sa"]
+[ext_resource type="Texture2D" uid="uid://cqsvesqsvjorj" path="res://Assets/GUI/Botones Menus/VOLVER_Pres.png" id="3_qynen"]
 [ext_resource type="Script" uid="uid://b31leutsofxpl" path="res://Scrips/GUI/control_botones.gd" id="3_vwvpl"]
 
 [node name="Controles" type="Control"]

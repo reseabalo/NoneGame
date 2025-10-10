@@ -11,3 +11,4 @@ func _on_restaurar_valores_predeterminados_pressed() -> void:
 	for item in Utils.get_all_children($CanvasLayer/ContenedorControles):
 		if item is ManejoTeclas:
 			item.display_current_key()
+	get_tree().reload_current_scene()
