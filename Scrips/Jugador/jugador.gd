@@ -79,6 +79,7 @@ func _on_vida_vida_termino() -> void:
 	ManejoEscenas.transicion("ir_oscurecer")
 	get_tree().call_deferred("reload_current_scene")
 	%Vida.set_vida(5)
+	ManejoEscenas.terminar_transicion()
 	
 func _cambiar_vida(diff: int):
 	%Vida.set_vida(diff)

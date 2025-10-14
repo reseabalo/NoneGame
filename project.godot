@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="NoneGame"
+config/name="Bugversity"
 run/main_scene="uid://dli471tb8hdt7"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
@@ -81,3 +81,5 @@ pausa={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
