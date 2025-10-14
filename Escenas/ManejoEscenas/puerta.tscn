@@ -1,12 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://c10y0n6n5sloe"]
+[gd_scene load_steps=4 format=3 uid="uid://c10y0n6n5sloe"]
 
 [ext_resource type="Script" uid="uid://bov7qk3wfbhx8" path="res://Scrips/ManejoEscenas/Puerta.gd" id="1_cydqo"]
+[ext_resource type="PackedScene" uid="uid://dpp60v716irsh" path="res://Escenas/interaccion.tscn" id="2_4tod0"]
 
-[node name="Puerta" type="Area2D"]
-collision_layer = 0
-collision_mask = 4
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2gb7"]
+size = Vector2(25, 20)
+
+[node name="Puerta" type="Node2D" groups=["Puertas"]]
 script = ExtResource("1_cydqo")
 
-[node name="Spawn" type="Marker2D" parent="."]
+[node name="Interaccion" parent="." instance=ExtResource("2_4tod0")]
+nombre_interaccion = "E para interactuar"
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaccion"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_e2gb7")
+
+[node name="Spawn" type="Marker2D" parent="."]
+position = Vector2(0, 21)

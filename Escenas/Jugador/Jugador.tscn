@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=44 format=3 uid="uid://cu82am0651fpq"]
+=======
+[gd_scene load_steps=75 format=3 uid="uid://cu82am0651fpq"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" uid="uid://yixqcyd4x06m" path="res://Scrips/Jugador/Jugador.gd" id="1_s1vfj"]
 [ext_resource type="Script" uid="uid://ce03jsbdwljjk" path="res://Scrips/ManejoVida/Vida.gd" id="2_eexci"]
@@ -7,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bw8t5j1fu6e6l" path="res://Scrips/Jugador/CambioColisiones.gd" id="5_eexci"]
 [ext_resource type="Script" uid="uid://bramogjdwanei" path="res://Scrips/Jugador/JugadorAnimacion.gd" id="5_ig1bj"]
 [ext_resource type="Script" uid="uid://e8u0byn0dbto" path="res://Scrips/Niveles/Hurtbox.gd" id="7_b8jmg"]
+[ext_resource type="PackedScene" uid="uid://cnmx7kcp446ab" path="res://Escenas/componente_interacciones.tscn" id="10_p2vdp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4mp40"]
 size = Vector2(15, 6)
@@ -337,8 +342,16 @@ graph_offset = Vector2(-177.846, 10.3223)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v328t"]
 size = Vector2(10, 19)
 
+<<<<<<< Updated upstream
 [node name="Jugador" type="CharacterBody2D"]
 collision_layer = 7
+=======
+[node name="Jugador" type="CharacterBody2D" groups=["Jugador"]]
+z_index = 2
+y_sort_enabled = true
+collision_layer = 15
+collision_mask = 9
+>>>>>>> Stashed changes
 script = ExtResource("1_s1vfj")
 
 [node name="Vida" type="Node" parent="."]
@@ -417,7 +430,13 @@ metadata/_custom_type_script = "uid://e8u0byn0dbto"
 position = Vector2(0, 9.5)
 shape = SubResource("RectangleShape2D_v328t")
 
+<<<<<<< Updated upstream
 [connection signal="vida_cambio" from="Vida" to="." method="_on_vida_vida_cambio"]
+=======
+[node name="ComponenteInteracciones" parent="." instance=ExtResource("10_p2vdp")]
+position = Vector2(0, 6)
+
+>>>>>>> Stashed changes
 [connection signal="vida_termino" from="Vida" to="." method="_on_vida_vida_termino"]
 [connection signal="timeout" from="Timers/dash_tiempo" to="." method="_on_dash_tiempo_timeout"]
 [connection signal="timeout" from="Timers/dash_devuelta" to="." method="_on_dash_devuelta_timeout"]

@@ -12,6 +12,7 @@ var can_atacar = true
 var atacando = false
 var puede_moverse = true
 
+<<<<<<< Updated upstream
 signal direccion_vista_cambio(viedo_derecha: bool)
 
 func _ready() -> void:
@@ -19,6 +20,10 @@ func _ready() -> void:
 	if ManejoEscenas.get_dato() > 0:
 		ManejoEscenas.escena_cambio.connect(_cambiar_vida)
 
+=======
+signal direccion_vista_cambio(direccion: Vector2 )
+
+>>>>>>> Stashed changes
 
 func _physics_process(_delta):
 	
@@ -75,15 +80,19 @@ func _on_ataque_tiempo_timeout():
 func _on_ataque_devuelta_timeout():
 	can_atacar = true
 	
+<<<<<<< Updated upstream
 func _on_spawn(posicion: Vector2, _direccion: String):
 	global_position = posicion
 
 
+=======
+>>>>>>> Stashed changes
 func _on_vida_vida_termino() -> void:
 	queue_free()
 	ManejoEscenas.transicion("ir_oscurecer")
 	get_tree().call_deferred("reload_current_scene")
 	%Vida.set_vida(5)
+	ManejoEscenas.terminar_transicion()
 	
 func _cambiar_vida(diff: int):
 	%Vida.set_vida(diff)

@@ -1,37 +1,51 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbnjv3omindx2"]
+[gd_scene load_steps=9 format=3 uid="uid://bbnjv3omindx2"]
 
-[ext_resource type="Texture2D" uid="uid://ge7vniy6ufhc" path="res://Assets/NPC/Facu-Idle.png" id="1_d1f52"]
+[ext_resource type="Texture2D" uid="uid://do8r3atm02t53" path="res://Assets/NPC/facu-sospecha.png" id="1_6a4bb"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_08q32"]
-atlas = ExtResource("1_d1f52")
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpbrd"]
+atlas = ExtResource("1_6a4bb")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6rdwq"]
-atlas = ExtResource("1_d1f52")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gdl7"]
+atlas = ExtResource("1_6a4bb")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kkbao"]
-atlas = ExtResource("1_d1f52")
+[sub_resource type="AtlasTexture" id="AtlasTexture_14qyo"]
+atlas = ExtResource("1_6a4bb")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7lu2m"]
-atlas = ExtResource("1_d1f52")
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcmoy"]
+atlas = ExtResource("1_6a4bb")
 region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcqxg"]
+atlas = ExtResource("1_6a4bb")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_offty"]
+atlas = ExtResource("1_6a4bb")
+region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wx8iq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_08q32")
+"texture": SubResource("AtlasTexture_cpbrd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6rdwq")
+"texture": SubResource("AtlasTexture_3gdl7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kkbao")
+"texture": SubResource("AtlasTexture_14qyo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7lu2m")
+"texture": SubResource("AtlasTexture_wcmoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcqxg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_offty")
 }],
 "loop": true,
 "name": &"default",
@@ -41,4 +55,4 @@ animations = [{
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_wx8iq")
 autoplay = "default"
-frame_progress = 0.861134
+frame_progress = 0.897681

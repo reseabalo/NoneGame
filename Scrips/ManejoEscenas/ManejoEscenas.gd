@@ -11,8 +11,18 @@ var ultima_escena_ejecutada: String #traquea la escena en la estuviste anteriorm
 var dato: int = 0 #temporal para la vida del jugador
 var jugador_posicion: Vector2
 
+<<<<<<< Updated upstream
 signal trigger_en_el_spawn_jugador
 signal escena_cambio
+=======
+var _personaje_1: bool
+var _personaje_2: bool
+
+var carga_partida: bool
+
+var nombre_puerta_salida:String
+
+>>>>>>> Stashed changes
 
 func ir_a_nivel(nivel_direccion: String, nombre_puerta: String , tipo_transicion: String):
 	
@@ -45,9 +55,6 @@ func salir_menu_opciones(escena_direccion: String,tipo_transicion: String):
 		change_scene_to_node(_escena_simultania)
 		call_deferred("_emitir_señal")
 
-func posicion_en_spawn(posicion: Vector2, direccion: String):
-	trigger_en_el_spawn_jugador.emit(posicion,direccion)
-
 func transicion(tipo_transicion: String):
 	
 	_transicion = "no_ir_transicion" if tipo_transicion == "no_transicion" else tipo_transicion
@@ -69,8 +76,19 @@ func change_scene_to_node(node):
 func _emitir_señal():
 	escena_cambio.emit(get_dato())
 	
+<<<<<<< Updated upstream
 func set_dato(new_dato):
 	dato = new_dato
 	
 func get_dato():
 	return dato
+=======
+func get_carga_partida():
+	return carga_partida
+
+func set_nombre_puerta(nuevo_nombre_puerta: String):
+	nombre_puerta_salida = nuevo_nombre_puerta
+
+func get_nombre_puerta():
+	return nombre_puerta_salida
+>>>>>>> Stashed changes
