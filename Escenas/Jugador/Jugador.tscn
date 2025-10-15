@@ -878,7 +878,7 @@ graph_offset = Vector2(-255.846, 40.8274)
 size = Vector2(10, 11)
 
 [node name="Jugador" type="CharacterBody2D" groups=["Jugador"]]
-z_index = 2
+z_index = 1
 y_sort_enabled = true
 collision_layer = 7
 script = ExtResource("1_s1vfj")

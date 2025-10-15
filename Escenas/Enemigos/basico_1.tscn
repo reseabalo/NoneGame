@@ -157,6 +157,7 @@ height = 29.9985
 radius = 48.0
 
 [node name="basico_1" type="CharacterBody2D"]
+z_index = 1
 script = ExtResource("1_t34q4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
