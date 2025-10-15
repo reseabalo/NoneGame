@@ -5,6 +5,7 @@ class_name  RaizMundo
 @onready var jugador_2: Jugador = %"Jugador 2"
 
 var lista: Array
+var jugador_seleccionado : Jugador
 
 var datos_guardar: Dictionary = {
 	"posicion_jugador_x": null,
@@ -35,6 +36,7 @@ func cargar_nivel_async(direccion: String):
 	await get_tree().physics_frame
 	get_tree().paused = true 
 	
+	var puerta_salida = ManejoEscenas.get_nombre_puerta()
 	var siguente_nivel = load(direccion).instantiate()
 	
 	#saca y lobera de la memoria los nodos del nivel anterior 
@@ -50,6 +52,10 @@ func cargar_nivel_async(direccion: String):
 	for child in get_children():
 		if child.is_in_group("Jugador"):
 			child.move_to_front()
+	
+	if puerta_salida != "":
+		get_tree().call_group("Puertas","puerta_a_salir",ManejoEscenas.get_nombre_puerta(),jugador_seleccionado)
+	
 	
 	get_tree().paused = false
 
@@ -67,11 +73,13 @@ func en_seleccion_de_personaje(lis:Array):
 	if jugable_1:
 		remove_child(jugador_2)
 		jugador_2.queue_free()
+		jugador_seleccionado = jugador
 		return
 	
 	if jugable_2:
 		remove_child(jugador)
 		jugador.queue_free()
+		jugador_seleccionado = jugador_2
 		return
 		
 
@@ -130,6 +138,7 @@ func en_cargado_partida(datos_guardados: Array):
 			lista = [true,false]
 			remove_child(jugador_2)
 			jugador_2.queue_free()
+			jugador_seleccionado = jugador
 		2:
 			jugador_2.global_position.x = dato_cargar["posicion_jugador_x"]
 			jugador_2.global_position.y = dato_cargar["posicion_jugador_y"]
@@ -137,3 +146,4 @@ func en_cargado_partida(datos_guardados: Array):
 			lista = [false,true]
 			remove_child(jugador)
 			jugador.queue_free()
+			jugador_seleccionado = jugador_2

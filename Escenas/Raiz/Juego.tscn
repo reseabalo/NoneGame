@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b1abik2w2lh8q" path="res://Scrips/Raiz/raiz_mundo.gd" id="1_0j5ga"]
 [ext_resource type="PackedScene" uid="uid://cu82am0651fpq" path="res://Escenas/Jugador/Jugador.tscn" id="1_knk6m"]
 [ext_resource type="Script" uid="uid://clhr5w8k1xovv" path="res://Scrips/Raiz/juego.gd" id="1_wxjva"]
-[ext_resource type="PackedScene" uid="uid://c88df8p8ic5rl" path="res://Escenas/Niveles/buffet.tscn" id="2_0j5ga"]
+[ext_resource type="PackedScene" uid="uid://c88df8p8ic5rl" path="res://Escenas/Niveles/Buffet.tscn" id="2_0j5ga"]
 [ext_resource type="PackedScene" uid="uid://df0qyd5xnmufv" path="res://Escenas/Jugador/jugador_2.tscn" id="4_6epp0"]
 [ext_resource type="Script" uid="uid://bera7l2q7yv3c" path="res://Scrips/GuardadoPartida/GuardadoCargadoPartida.gd" id="4_wyvlv"]
 
