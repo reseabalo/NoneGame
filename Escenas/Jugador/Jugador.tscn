@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://cu82am0651fpq"]
+[gd_scene load_steps=75 format=3 uid="uid://cu82am0651fpq"]
 
 [ext_resource type="Script" uid="uid://yixqcyd4x06m" path="res://Scrips/Jugador/jugador.gd" id="1_s1vfj"]
 [ext_resource type="Script" uid="uid://ce03jsbdwljjk" path="res://Scrips/ManejoVida/Vida.gd" id="2_eexci"]
@@ -9,6 +9,10 @@
 [ext_resource type="Script" uid="uid://bramogjdwanei" path="res://Scrips/Jugador/JugadorAnimacion.gd" id="5_ig1bj"]
 [ext_resource type="Texture2D" uid="uid://b0rb441rb48vm" path="res://Assets/Player/Personajes/Maria/maria-idle.png" id="5_p2vdp"]
 [ext_resource type="Script" uid="uid://e8u0byn0dbto" path="res://Scrips/NIveles/Hurtbox.gd" id="7_b8jmg"]
+<<<<<<< HEAD
+=======
+[ext_resource type="PackedScene" uid="uid://cnmx7kcp446ab" path="res://Escenas/Interacciones/componente_interacciones.tscn" id="10_p2vdp"]
+>>>>>>> e535094eede5b57044b973ebc0af1042c4c75030
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4mp40"]
 size = Vector2(15, 6)
@@ -964,6 +968,9 @@ metadata/_custom_type_script = "uid://e8u0byn0dbto"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(-1, 4)
 shape = SubResource("RectangleShape2D_v328t")
+
+[node name="ComponenteInteracciones" parent="." instance=ExtResource("10_p2vdp")]
+position = Vector2(0, 7)
 
 [connection signal="vida_termino" from="Vida" to="." method="_on_vida_vida_termino"]
 [connection signal="timeout" from="Timers/dash_tiempo" to="." method="_on_dash_tiempo_timeout"]

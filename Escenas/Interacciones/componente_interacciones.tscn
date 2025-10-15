@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnmx7kcp446ab"]
+
+[ext_resource type="Script" uid="uid://cvj8gsyya4u1a" path="res://Scrips/Interacciones/componente_interacciones.gd" id="1_dlire"]
+[ext_resource type="FontFile" uid="uid://dnbte8l6kh62s" path="res://Assets/Fuentes/ari_w9500/ari-w9500-bold.ttf" id="2_vu3ly"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlire"]
+
+[node name="ComponenteInteracciones" type="Node2D"]
+script = ExtResource("1_dlire")
+
+[node name="RangoInteraccion" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="AreaInteraccion" type="CollisionShape2D" parent="RangoInteraccion"]
+shape = SubResource("RectangleShape2D_dlire")
+
+[node name="InteraccionLabel" type="Label" parent="."]
+offset_left = -18.0
+offset_top = -39.0
+offset_right = 22.0
+offset_bottom = -16.0
+theme_override_fonts/font = ExtResource("2_vu3ly")
+
+[connection signal="area_entered" from="RangoInteraccion" to="." method="_on_rango_interaccion_area_entered"]
+[connection signal="area_exited" from="RangoInteraccion" to="." method="_on_rango_interaccion_area_exited"]

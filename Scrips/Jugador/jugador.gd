@@ -5,18 +5,15 @@ class_name Jugador
 var direccion_personaje : Vector2
 @onready var vida: Vida = %Vida
 
-const  dash_velocidad = 1000
+const dash_velocidad = 525
 var dashing = false
 var can_dash = true
 var can_atacar = true
 var atacando = false
 var puede_moverse = true
-var ultima_direccion_movimiento :Vector2= Vector2(1.0,0.0)
 
-signal direccion_vista_cambio(viedo_derecha: bool, direccion: Vector2 )
+signal direccion_vista_cambio(direccion: Vector2 )
 
-func _ready() -> void:
-	ManejoEscenas.trigger_en_el_spawn_jugador.connect(_on_spawn)
 
 func _physics_process(_delta):
 	
@@ -33,7 +30,6 @@ func _physics_process(_delta):
 	emit_signal("direccion_vista_cambio",direccion_personaje)
 	
 	if Input.is_action_just_pressed("desplazamiento") and can_dash:
-		velocity = ultima_direccion_movimiento * dash_velocidad
 		dashing = true
 		can_dash = false
 		$Timers/dash_tiempo.start()
@@ -49,11 +45,14 @@ func _physics_process(_delta):
 	if !puede_moverse:
 		velocity = Vector2.ZERO
 		
-	if direccion_personaje and puede_moverse and dashing == false:
-		ultima_direccion_movimiento = direccion_personaje
-		velocity = direccion_personaje * velocidad_movimiento 
+	if direccion_personaje and puede_moverse:
+		if dashing:
+			velocity = direccion_personaje * dash_velocidad 
+		else:
+			velocity = direccion_personaje * velocidad_movimiento 
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO,velocidad_movimiento)
+
 	move_and_slide()
 
 #para parar el dash
@@ -71,8 +70,10 @@ func _on_ataque_tiempo_timeout():
 func _on_ataque_devuelta_timeout():
 	can_atacar = true
 	
+
 func _on_spawn(posicion: Vector2, _direccion: String):
 	global_position = posicion
+
 
 func _on_vida_vida_termino() -> void:
 	queue_free()
@@ -81,5 +82,3 @@ func _on_vida_vida_termino() -> void:
 	%Vida.set_vida(5)
 	ManejoEscenas.terminar_transicion()
 	
-func _cambiar_vida(diff: int):
-	%Vida.set_vida(diff)
