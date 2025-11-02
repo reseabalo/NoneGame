@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Jugador
 
 @export var velocidad_movimiento : float = 230
+
 var direccion_personaje : Vector2
 @onready var vida: Vida = %Vida
 

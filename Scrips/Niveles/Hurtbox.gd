@@ -8,7 +8,7 @@ signal  daño_recivido(daño: int)
 func  _ready():
 	connect("area_entered", _on_area_entered)
 
-func _on_area_entered(hitbox: HitBox) -> void:
-	if hitbox != null:
-		vida.vida -= hitbox.daño
-		daño_recivido.emit(hitbox.daño)
+func _on_area_entered(area: Area2D):
+	if area is HitBox and area != null:
+		vida.vida -= area.daño
+		daño_recivido.emit(area.daño)

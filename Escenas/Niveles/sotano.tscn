@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=4 uid="uid://c6fop82a1blfx"]
+[gd_scene load_steps=18 format=4 uid="uid://c6fop82a1blfx"]
 
 [ext_resource type="Texture2D" uid="uid://bathdd0bs18xw" path="res://Assets/Entorno/Mapa/Mapas-Ambiente.png" id="1_jjocf"]
 [ext_resource type="Texture2D" uid="uid://0c3e6c17abdf" path="res://Assets/Entorno/Mapa/Objetos-2.png" id="2_jjocf"]
 [ext_resource type="PackedScene" uid="uid://c10y0n6n5sloe" path="res://Escenas/ManejoEscenas/puerta.tscn" id="3_m8gi3"]
+[ext_resource type="PackedScene" uid="uid://lvisquyvpxde" path="res://Escenas/Enemigos/basico_2.tscn" id="4_3jlcw"]
+[ext_resource type="PackedScene" uid="uid://bncc6jynwne4c" path="res://Escenas/Enemigos/basico_1.tscn" id="5_03hkk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vmnmg"]
 texture = ExtResource("1_jjocf")
@@ -1506,3 +1508,12 @@ position = Vector2(-1088, 562)
 nombre_puerta_salir = "PuertaSotano"
 direccion_nivel = "res://Escenas/Niveles/buffet.tscn"
 tipo_transicion = "ir_oscurecer"
+
+[node name="basico_2" parent="." instance=ExtResource("4_3jlcw")]
+position = Vector2(-1297, 593)
+
+[node name="basico_1" parent="." instance=ExtResource("5_03hkk")]
+position = Vector2(-666, 452)
+
+[node name="basico_3" parent="." instance=ExtResource("5_03hkk")]
+position = Vector2(-942, 193)

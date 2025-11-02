@@ -9,10 +9,7 @@
 [ext_resource type="Script" uid="uid://bramogjdwanei" path="res://Scrips/Jugador/JugadorAnimacion.gd" id="5_ig1bj"]
 [ext_resource type="Texture2D" uid="uid://b0rb441rb48vm" path="res://Assets/Player/Personajes/Maria/maria-idle.png" id="5_p2vdp"]
 [ext_resource type="Script" uid="uid://e8u0byn0dbto" path="res://Scrips/NIveles/Hurtbox.gd" id="7_b8jmg"]
-<<<<<<< HEAD
-=======
 [ext_resource type="PackedScene" uid="uid://cnmx7kcp446ab" path="res://Escenas/Interacciones/componente_interacciones.tscn" id="10_p2vdp"]
->>>>>>> e535094eede5b57044b973ebc0af1042c4c75030
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4mp40"]
 size = Vector2(15, 6)
@@ -879,7 +876,7 @@ transitions = ["Start", "caminata", SubResource("AnimationNodeStateMachineTransi
 graph_offset = Vector2(-255.846, 40.8274)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v328t"]
-size = Vector2(10, 11)
+size = Vector2(16, 37)
 
 [node name="Jugador" type="CharacterBody2D" groups=["Jugador"]]
 z_index = 1
@@ -893,7 +890,7 @@ zoom = Vector2(2, 2)
 [node name="Vida" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_eexci")
-vida_maxima = 5
+vida_maxima = 2
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 z_index = 1
@@ -947,7 +944,7 @@ wait_time = 0.2
 wait_time = 0.5
 
 [node name="ataque_tiempo" type="Timer" parent="Timers"]
-wait_time = 0.3
+wait_time = 0.6
 
 [node name="ataque_devuelta" type="Timer" parent="Timers"]
 wait_time = 0.4
@@ -960,13 +957,13 @@ cambio_colisiones = NodePath("../AnimatedSprite2D/HitBox/Golpe")
 
 [node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("vida")]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 516
 script = ExtResource("7_b8jmg")
 vida = NodePath("../Vida")
 metadata/_custom_type_script = "uid://e8u0byn0dbto"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-1, 4)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_v328t")
 
 [node name="ComponenteInteracciones" parent="." instance=ExtResource("10_p2vdp")]
