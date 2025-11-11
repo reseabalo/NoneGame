@@ -31,10 +31,12 @@ func _ready() -> void:
 	if con < 2:
 		en_seleccion_de_personaje(lista_temp)
 
-
 func cargar_nivel_async(direccion: String):
 	await get_tree().physics_frame
 	get_tree().paused = true 
+	
+	for node in get_tree().get_nodes_in_group("nivel"):
+		ManejoEscenas.set_escena_actual(get_direccion_nivel_actual())
 	
 	var puerta_salida = ManejoEscenas.get_nombre_puerta()
 	var siguente_nivel = load(direccion).instantiate()
@@ -55,9 +57,9 @@ func cargar_nivel_async(direccion: String):
 	
 	if puerta_salida != "":
 		get_tree().call_group("Puertas","puerta_a_salir",ManejoEscenas.get_nombre_puerta(),jugador_seleccionado)
-	
-	
+		
 	get_tree().paused = false
+	
 
 #funcion que guarda en una lista temporal el jugador elegido
 #y saca de memoria al jugador que no fue elegido
@@ -117,8 +119,6 @@ func en_guardado_partida(lista_datos: Array):
 			datos_guardar["jugador_seleccionado_escena"] = jugador_2.scene_file_path
 			lista_datos.append(datos_guardar)
 
-
-
 func en_cargado_partida(datos_guardados: Array):
 	var jugable: int
 	var dato_cargar: Dictionary
@@ -147,3 +147,7 @@ func en_cargado_partida(datos_guardados: Array):
 			remove_child(jugador)
 			jugador.queue_free()
 			jugador_seleccionado = jugador_2
+
+func restauracion_enemigo(restaurado: Object):
+	add_child(restaurado)
+	

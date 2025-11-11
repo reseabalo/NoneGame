@@ -1,13 +1,14 @@
 extends Node
 
 const DEFAULT_KEY_MAP := {
-	"mover_arriba": [KEY_UP],
-	"mover_abajo": [KEY_DOWN],
-	"mover_derecha": [KEY_RIGHT],
-	"mover_izquierda": [KEY_LEFT],
+	"mover_arriba": [KEY_UP,KEY_W],
+	"mover_abajo": [KEY_DOWN,KEY_S],
+	"mover_derecha": [KEY_RIGHT,KEY_D],
+	"mover_izquierda": [KEY_LEFT,KEY_A],
 	"desplazamiento": [KEY_Z],
 	"ataque": [KEY_X],
-	"pausa": [KEY_ESCAPE]
+	"pausa": [KEY_ESCAPE],
+	"interactuar": [KEY_E]
 }
 
 const keymaps_path = "user://keymaps.data"

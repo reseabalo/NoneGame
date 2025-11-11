@@ -31,6 +31,7 @@ var resoluciones_lista : Array = [
 func _ready() -> void:
 	#agrega al menu de pausa como hijo de GUI por lo tanto siempre esta cargado.
 	#solamente se le cambia su visibilidad.
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	for i in gui_componentes:
 		var new_escena = load(i).instantiate()
 		add_child(new_escena)
@@ -92,11 +93,13 @@ func calculate_window_size():
 
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("pausa") and  visibilidad:
-		#ManejoEscenas.ir_a_escena("res://Escenas/GUI/menu_opciones.tscn","ir_oscurecer")
-		#get_tree().change_scene_to_file("res://Escenas/GUI/menu_Pausa.tscn")
+	if Input.is_action_just_pressed("pausa") and visibilidad:
 		var menu_opciones = get_node("Menu Pausa")
 		menu_opciones.visible = !menu_opciones.visible
+		if get_tree().paused:
+			get_tree().paused = false
+		else:
+			get_tree().paused = true
 	else:
 		return
 

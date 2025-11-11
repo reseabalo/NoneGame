@@ -1,14 +1,15 @@
 [gd_scene load_steps=78 format=3 uid="uid://df0qyd5xnmufv"]
 
-[ext_resource type="Script" uid="uid://yixqcyd4x06m" path="res://Scrips/Jugador/Jugador.gd" id="1_7pajj"]
+[ext_resource type="Script" uid="uid://yixqcyd4x06m" path="res://Scrips/Jugador/jugador.gd" id="1_7pajj"]
 [ext_resource type="Script" uid="uid://ce03jsbdwljjk" path="res://Scrips/ManejoVida/Vida.gd" id="2_aokv6"]
 [ext_resource type="Texture2D" uid="uid://bykcwqe4fpgkg" path="res://Assets/Player/Personajes/Jere/jere-walk.png" id="3_aokv6"]
 [ext_resource type="Texture2D" uid="uid://dj5aj7gkanf4r" path="res://Assets/Player/Personajes/Jere/jere-attack.png" id="3_kwd0w"]
 [ext_resource type="Texture2D" uid="uid://dqjbcnli4jcrr" path="res://Assets/Player/Personajes/Jere/jere-idle.png" id="4_kwd0w"]
-[ext_resource type="Script" uid="uid://bdjytlsp754wa" path="res://Scrips/ManejoVida/Hitbox.gd" id="4_queqx"]
+[ext_resource type="Script" uid="uid://bdjytlsp754wa" path="res://Scrips/ManejoVida/hitbox.gd" id="4_queqx"]
 [ext_resource type="Script" uid="uid://bw8t5j1fu6e6l" path="res://Scrips/Jugador/CambioColisiones.gd" id="5_7g1hu"]
 [ext_resource type="Script" uid="uid://bramogjdwanei" path="res://Scrips/Jugador/JugadorAnimacion.gd" id="6_ns8lb"]
-[ext_resource type="Script" uid="uid://e8u0byn0dbto" path="res://Scrips/Niveles/Hurtbox.gd" id="7_imsw6"]
+[ext_resource type="Script" uid="uid://e8u0byn0dbto" path="res://Scrips/ManejoVida/Hurtbox.gd" id="7_imsw6"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4mp40"]
 size = Vector2(15, 6)

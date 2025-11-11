@@ -1,9 +1,12 @@
-[gd_scene load_steps=23 format=4 uid="uid://c88df8p8ic5rl"]
+[gd_scene load_steps=26 format=4 uid="uid://c88df8p8ic5rl"]
 
+[ext_resource type="Script" uid="uid://cx22j3jtqwne6" path="res://Scrips/NIveles/datosniveles.gd" id="1_agil5"]
 [ext_resource type="Texture2D" uid="uid://bathdd0bs18xw" path="res://Assets/Entorno/Mapa/Mapas-Ambiente.png" id="1_i4mtw"]
 [ext_resource type="Texture2D" uid="uid://diamx0sjgtkdi" path="res://Assets/Entorno/Mapa/Objetos-1.png" id="2_bssmd"]
-[ext_resource type="PackedScene" uid="uid://b4i3w31i0ml0" path="res://Escenas/Enemigo_temporal.tscn" id="3_ha5qo"]
 [ext_resource type="PackedScene" uid="uid://c10y0n6n5sloe" path="res://Escenas/ManejoEscenas/puerta.tscn" id="4_bt3qe"]
+[ext_resource type="PackedScene" uid="uid://swp8l70t87jn" path="res://Escenas/ManejoEscenas/puertaancha.tscn" id="6_vtxj7"]
+[ext_resource type="PackedScene" uid="uid://bncc6jynwne4c" path="res://Escenas/Enemigos/EscarabajoBasico.tscn" id="7_av023"]
+[ext_resource type="PackedScene" uid="uid://lvisquyvpxde" path="res://Escenas/Enemigos/MoscaBasico.tscn" id="7_ulcr3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bssmd"]
 texture = ExtResource("1_i4mtw")
@@ -1912,6 +1915,7 @@ texture = ExtResource("2_bssmd")
 sources/1 = SubResource("TileSetAtlasSource_jjtun")
 
 [node name="buffet" type="Node2D" groups=["nivel"]]
+script = ExtResource("1_agil5")
 
 [node name="Mapa" type="Node2D" parent="."]
 
@@ -1954,21 +1958,63 @@ tile_set = SubResource("TileSet_6dyhn")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-435, 418, -2, 419, -3, 482, 126, 482, 125, 548, 398, 547, 398, 640, 671, 640, 671, 448, 1152, 450, 1152, 364, 526, 364, 527, 82, 1154, 81, 1148, -4, 431, 0, 432, 368, 399, 367, 399, 457, 351, 457, 352, 491, 209, 494, 209, 430, 48, 429, 47, 332, -444, 334, -440, 273, 702, -88, 1166, -22, 1174, 567, 538, 694, -453, 505, -454, 337, -434, 340)
+polygon = PackedVector2Array(-435, 418, -2, 419, -3, 482, 126, 482, 125, 548, 398, 547, 398, 640, 671, 640, 671, 448, 1152, 450, 1152, 364, 1103, 365, 526, 364, 527, 82, 1154, 81, 1148, -4, 431, 0, 432, 368, 399, 367, 399, 457, 351, 457, 352, 491, 209, 494, 209, 430, 48, 429, 47, 332, -444, 334, -440, 273, 702, -88, 1166, -22, 1174, 567, 538, 694, -453, 505, -454, 337, -434, 340)
 
-[node name="Enemigos" type="Node2D" parent="."]
-position = Vector2(775, 407)
+[node name="Puertas" type="Node2D" parent="."]
 
-[node name="Enemigo" parent="Enemigos" instance=ExtResource("3_ha5qo")]
-position = Vector2(156, -9)
-
-[node name="Enemigo2" parent="Enemigos" instance=ExtResource("3_ha5qo")]
-position = Vector2(80, 24)
-
-[node name="Enemigo3" parent="Enemigos" instance=ExtResource("3_ha5qo")]
-
-[node name="PuertaSotano" parent="." instance=ExtResource("4_bt3qe")]
-position = Vector2(273, 492)
-nombre_puerta_salir = "PuertaPlantaBase"
+[node name="PuertaSotano" parent="Puertas" instance=ExtResource("4_bt3qe")]
+position = Vector2(274, 488)
+nombre_puerta_salir = Array[String](["PuertaPlantaBase"])
 direccion_nivel = "res://Escenas/Niveles/sotano.tscn"
 tipo_transicion = "ir_oscurecer"
+
+[node name="PuertaAulaBatalla" parent="Puertas" instance=ExtResource("6_vtxj7")]
+position = Vector2(128, 424)
+nombre_puerta_salir = Array[String](["Puerta"])
+direccion_nivel = "res://Escenas/Niveles/aula_batalla_buffet.tscn"
+tipo_transicion = "ir_oscurecer"
+
+[node name="Aula 1" parent="Puertas" instance=ExtResource("4_bt3qe")]
+position = Vector2(799, 361)
+nombre_puerta_salir = Array[String](["Puerta"])
+direccion_nivel = "res://Escenas/Niveles/aula_normal_1.tscn"
+tipo_transicion = "ir_oscurecer"
+
+[node name="Aula 2" parent="Puertas" instance=ExtResource("4_bt3qe")]
+position = Vector2(1103, 362)
+nombre_puerta_salir = Array[String](["Puerta"])
+direccion_nivel = "res://Escenas/Niveles/aula_normal_3.tscn"
+tipo_transicion = "ir_oscurecer"
+
+[node name="Aula 3" parent="Puertas" instance=ExtResource("4_bt3qe")]
+position = Vector2(-209, 328)
+nombre_puerta_salir = Array[String](["Puerta"])
+direccion_nivel = "res://Escenas/Niveles/aula_normal_2.tscn"
+tipo_transicion = "ir_oscurecer"
+
+[node name="Aula 4" parent="Puertas" instance=ExtResource("4_bt3qe")]
+position = Vector2(818, -6)
+nombre_puerta_salir = Array[String](["Puerta"])
+direccion_nivel = "res://Escenas/Niveles/aula_normal_3.tscn"
+tipo_transicion = "ir_oscurecer"
+
+[node name="Enemigo" type="Node2D" parent="."]
+position = Vector2(-224, 382)
+
+[node name="basico_4" parent="Enemigo" instance=ExtResource("7_ulcr3")]
+position = Vector2(600, 132)
+
+[node name="basico_1" parent="Enemigo" instance=ExtResource("7_av023")]
+position = Vector2(978, 32)
+
+[node name="basico_2" parent="Enemigo" instance=ExtResource("7_av023")]
+position = Vector2(1031, -340)
+
+[node name="basico_3" parent="Enemigo" instance=ExtResource("7_av023")]
+
+[connection signal="entro_puerta" from="Puertas/PuertaSotano" to="." method="_on_puerta_entro"]
+[connection signal="entro_puerta" from="Puertas/PuertaAulaBatalla" to="." method="_on_puerta_entro"]
+[connection signal="entro_puerta" from="Puertas/Aula 1" to="." method="_on_puerta_entro"]
+[connection signal="entro_puerta" from="Puertas/Aula 2" to="." method="_on_puerta_entro"]
+[connection signal="entro_puerta" from="Puertas/Aula 3" to="." method="_on_puerta_entro"]
+[connection signal="entro_puerta" from="Puertas/Aula 4" to="." method="_on_puerta_entro"]

@@ -70,10 +70,8 @@ func _on_ataque_tiempo_timeout():
 func _on_ataque_devuelta_timeout():
 	can_atacar = true
 	
-
 func _on_spawn(posicion: Vector2, _direccion: String):
 	global_position = posicion
-
 
 func _on_vida_vida_termino() -> void:
 	queue_free()
@@ -82,3 +80,8 @@ func _on_vida_vida_termino() -> void:
 	%Vida.set_vida(5)
 	ManejoEscenas.terminar_transicion()
 	
+func no_permitir_movimiento():
+	puede_moverse = false
+
+func permitir_movimiento():
+	puede_moverse = true

@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://bw8t5j1fu6e6l" path="res://Scrips/Jugador/CambioColisiones.gd" id="5_eexci"]
 [ext_resource type="Script" uid="uid://bramogjdwanei" path="res://Scrips/Jugador/JugadorAnimacion.gd" id="5_ig1bj"]
 [ext_resource type="Texture2D" uid="uid://b0rb441rb48vm" path="res://Assets/Player/Personajes/Maria/maria-idle.png" id="5_p2vdp"]
-[ext_resource type="Script" uid="uid://e8u0byn0dbto" path="res://Scrips/NIveles/Hurtbox.gd" id="7_b8jmg"]
+[ext_resource type="Script" uid="uid://e8u0byn0dbto" path="res://Scrips/ManejoVida/Hurtbox.gd" id="7_b8jmg"]
 [ext_resource type="PackedScene" uid="uid://cnmx7kcp446ab" path="res://Escenas/Interacciones/componente_interacciones.tscn" id="10_p2vdp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4mp40"]

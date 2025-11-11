@@ -172,6 +172,23 @@ script = ExtResource("3_vwvpl")
 accion = "pausa"
 primaria = false
 
+[node name="Interactuar" type="Label" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+text = "Interactuar"
+
+[node name="PrincipalIteractuar" type="Button" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("3_vwvpl")
+accion = "interactuar"
+
+[node name="SecundarioInteractuar" type="Button" parent="CanvasLayer/ContenedorControles"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("3_vwvpl")
+accion = "interactuar"
+primaria = false
+
 [node name="ContenedorRestaurarValoresPredeterminados" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 7
 anchor_left = 0.5
@@ -221,5 +238,7 @@ texture_pressed = ExtResource("3_qynen")
 [connection signal="toggled" from="CanvasLayer/ContenedorControles/SecundarioAtaque" to="CanvasLayer/ContenedorControles/SecundarioAtaque" method="_on_toggled"]
 [connection signal="toggled" from="CanvasLayer/ContenedorControles/PrincipalPausa" to="CanvasLayer/ContenedorControles/PrincipalPausa" method="_on_toggled"]
 [connection signal="toggled" from="CanvasLayer/ContenedorControles/SecundarioPausa" to="CanvasLayer/ContenedorControles/SecundarioPausa" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ContenedorControles/PrincipalIteractuar" to="CanvasLayer/ContenedorControles/PrincipalIteractuar" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ContenedorControles/SecundarioInteractuar" to="CanvasLayer/ContenedorControles/SecundarioInteractuar" method="_on_toggled"]
 [connection signal="pressed" from="CanvasLayer/ContenedorRestaurarValoresPredeterminados/RestaurarValoresPredeterminados" to="." method="_on_restaurar_valores_predeterminados_pressed"]
 [connection signal="pressed" from="CanvasLayer/ContenedorVolver/Volver" to="." method="_on_texture_button_pressed"]

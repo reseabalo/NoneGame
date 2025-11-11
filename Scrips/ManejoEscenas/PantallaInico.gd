@@ -19,7 +19,8 @@ func _on_cargar_partida_pressed() -> void:
 
 #va a la escena del menu de obciones
 func _on_opciones_pressed() -> void:
-	ManejoEscenas.ir_a_escena("res://Escenas/GUI/Menu Opciones.tscn","ir_oscurecer","res://Escenas/ManejoEscenas/pantalla_inico.tscn")
+	ManejoEscenas.transicion("ir_oscurecer")
+	get_tree().change_scene_to_file("res://Escenas/GUI/Menu Opciones.tscn")
 
 #salir del juego
 func _on_salir_pressed() -> void:

@@ -38,4 +38,7 @@ func _on_pantalla_completa_toggled(toggled_on: bool) -> void:
 	GUI.redimencionar_ventana()
 
 func _on_volver_pressed() -> void:
-	get_tree().change_scene_to_file("res://Escenas/GUI/Menu Opciones.tscn")
+	if ManejoEscenas.esta_juego:
+		get_tree().call_group("eventos_juego","cargar_nivel_async","res://Escenas/GUI/Menu Opciones.tscn")
+	else:
+		get_tree().change_scene_to_file("res://Escenas/GUI/Menu Opciones.tscn")

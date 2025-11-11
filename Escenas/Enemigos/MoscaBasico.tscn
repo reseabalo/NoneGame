@@ -1,0 +1,183 @@
+[gd_scene load_steps=14 format=3 uid="uid://lvisquyvpxde"]
+
+[ext_resource type="Script" uid="uid://b6ijyaig8o8wd" path="res://Scrips/Enemigos/moscabasico.gd" id="1_sgshu"]
+[ext_resource type="Texture2D" uid="uid://cofc3r7c7bxxs" path="res://Assets/Enemigos/basico_2.png" id="2_fwinf"]
+[ext_resource type="Script" uid="uid://ce03jsbdwljjk" path="res://Scrips/ManejoVida/Vida.gd" id="3_3h4ji"]
+[ext_resource type="Script" uid="uid://e8u0byn0dbto" path="res://Scrips/ManejoVida/Hurtbox.gd" id="4_qbjoe"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fwinf"]
+radius = 9.99999
+height = 36.0
+
+[sub_resource type="Animation" id="Animation_hpci4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_2qn4u"]
+resource_name = "ataque"
+length = 1.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_locg5"]
+resource_name = "caminar"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_t34q4"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_xnf1s"]
+resource_name = "muerte"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [20, 21, 20, 21]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sgj45"]
+_data = {
+&"RESET": SubResource("Animation_hpci4"),
+&"ataque": SubResource("Animation_2qn4u"),
+&"caminar": SubResource("Animation_locg5"),
+&"idle": SubResource("Animation_t34q4"),
+&"muerte": SubResource("Animation_xnf1s")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_asggt"]
+radius = 199.003
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_fwinf"]
+points = PackedVector2Array(6.99142, 17.0035, -6.0106, 20.997, -13.0091, 17.9934, -16.9975, -5.00858, -12.9924, -15.0066, -1.9894, -21.001, 8.00909, -17.996)
+
+[node name="basico_2" type="CharacterBody2D" groups=["enemigo", "eventos_juego"]]
+z_index = 1
+script = ExtResource("1_sgshu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fwinf")
+hframes = 5
+vframes = 5
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6, -3)
+rotation = -1.57202
+shape = SubResource("CapsuleShape2D_fwinf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sgj45")
+}
+autoplay = "idle"
+
+[node name="Vida_enemigo" type="Node" parent="."]
+script = ExtResource("3_3h4ji")
+vida_maxima = 1
+metadata/_custom_type_script = "uid://ce03jsbdwljjk"
+
+[node name="area_deteccion" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_deteccion"]
+shape = SubResource("CircleShape2D_asggt")
+
+[node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("vida")]
+position = Vector2(-7, -3)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_qbjoe")
+vida = NodePath("../Vida_enemigo")
+metadata/_custom_type_script = "uid://e8u0byn0dbto"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(2, 4)
+rotation = 1.57029
+shape = SubResource("ConvexPolygonShape2D_fwinf")
+debug_color = Color(0.993547, 0, 0.235962, 0.42)
+
+[node name="ataque_duracion" type="Timer" parent="."]
+wait_time = 1.6
+one_shot = true
+
+[node name="ataque_cd" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="muerte" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="disparo" type="Timer" parent="."]
+one_shot = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-26, 6)
+
+[connection signal="vida_termino" from="Vida_enemigo" to="." method="_on_vida_enemigo_vida_termino"]
+[connection signal="body_entered" from="area_deteccion" to="." method="_on_area_deteccion_body_entered"]
+[connection signal="body_exited" from="area_deteccion" to="." method="_on_area_deteccion_body_exited"]
+[connection signal="timeout" from="ataque_duracion" to="." method="_on_ataque_duracion_timeout"]
+[connection signal="timeout" from="ataque_cd" to="." method="_on_ataque_cd_timeout"]
+[connection signal="timeout" from="muerte" to="." method="_on_muerte_timeout"]
+[connection signal="timeout" from="disparo" to="." method="_on_disparo_timeout"]

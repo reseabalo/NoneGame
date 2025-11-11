@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dii7yq5wgicwx" path="res://Escenas/enemigo_temporal.gd" id="1_2ljd2"]
 [ext_resource type="Texture2D" uid="uid://63kk8vnvd2yw" path="res://enemigo_provisional.png" id="1_lw372"]
-[ext_resource type="Script" uid="uid://e8u0byn0dbto" path="res://Scrips/Niveles/Hurtbox.gd" id="2_2ljd2"]
+[ext_resource type="Script" uid="uid://e8u0byn0dbto" path="res://Scrips/ManejoVida/Hurtbox.gd" id="2_2ljd2"]
 [ext_resource type="Script" uid="uid://ce03jsbdwljjk" path="res://Scrips/ManejoVida/Vida.gd" id="3_eit11"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqtuq"]
