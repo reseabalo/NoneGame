@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dli471tb8hdt7"]
+[gd_scene load_steps=12 format=3 uid="uid://dli471tb8hdt7"]
 
 [ext_resource type="Script" uid="uid://bmeyp3oob10nk" path="res://Scrips/ManejoEscenas/PantallaInico.gd" id="1_6i2i5"]
+[ext_resource type="VideoStream" uid="uid://5yb07k0b0lf4" path="res://Assets/Cinematicas/CinematicaInicioPartida.ogv" id="2_40d5h"]
 [ext_resource type="Texture2D" uid="uid://fi88w82veykf" path="res://Assets/GUI/Botones Menus/NUEVAPARTIDA.png" id="3_40d5h"]
 [ext_resource type="Texture2D" uid="uid://df3u3fqrreegy" path="res://Assets/GUI/Botones Menus/NUEVAPARTIDA_Pres.png" id="4_mwq6q"]
 [ext_resource type="Texture2D" uid="uid://d3iruxlbyn638" path="res://Assets/GUI/Botones Menus/CARGARPARTIDA.png" id="5_tgyw3"]
@@ -24,49 +25,67 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+[node name="ContenedorBotones" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -64.0
+offset_top = -134.0
+offset_right = 64.0
+offset_bottom = 134.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Jugar" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+[node name="Jugar" type="TextureButton" parent="CanvasLayer/ContenedorBotones"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("3_40d5h")
 texture_pressed = ExtResource("4_mwq6q")
 
-[node name="CargarPartida" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+[node name="CargarPartida" type="TextureButton" parent="CanvasLayer/ContenedorBotones"]
 layout_mode = 2
 texture_normal = ExtResource("5_tgyw3")
 texture_pressed = ExtResource("6_jy38p")
 
-[node name="Opciones" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+[node name="Opciones" type="TextureButton" parent="CanvasLayer/ContenedorBotones"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("7_bmeen")
 texture_pressed = ExtResource("8_84rd8")
 
-[node name="Salir" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+[node name="Salir" type="TextureButton" parent="CanvasLayer/ContenedorBotones"]
 layout_mode = 2
 texture_normal = ExtResource("9_8movm")
 texture_pressed = ExtResource("10_xgnr6")
 
+[node name="CinematicaInicio" type="VideoStreamPlayer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = -0.5
+anchor_top = -0.5
+anchor_right = 1.5
+anchor_bottom = 1.5
+offset_left = 320.0
+offset_top = 180.0
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+stream = ExtResource("2_40d5h")
+metadata/_edit_use_anchors_ = true
+
 [node name="Musica Menu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_tgyw3")
+bus = &"Musica"
 
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/CargarPartida" to="." method="_on_cargar_partida_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/Opciones" to="." method="_on_opciones_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/Salir" to="." method="_on_salir_pressed"]
+[connection signal="pressed" from="CanvasLayer/ContenedorBotones/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="CanvasLayer/ContenedorBotones/CargarPartida" to="." method="_on_cargar_partida_pressed"]
+[connection signal="pressed" from="CanvasLayer/ContenedorBotones/Opciones" to="." method="_on_opciones_pressed"]
+[connection signal="pressed" from="CanvasLayer/ContenedorBotones/Salir" to="." method="_on_salir_pressed"]
+[connection signal="finished" from="CanvasLayer/CinematicaInicio" to="." method="_on_cinematica_inicio_finished"]

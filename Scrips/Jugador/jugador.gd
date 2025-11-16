@@ -4,6 +4,7 @@ class_name Jugador
 @export var velocidad_movimiento : float = 230
 var direccion_personaje : Vector2
 @onready var vida: Vida = %Vida
+@onready var muerte: Timer = $Timers/Muerte
 
 const dash_velocidad = 525
 var dashing = false
@@ -11,6 +12,7 @@ var can_dash = true
 var can_atacar = true
 var atacando = false
 var puede_moverse = true
+var vivo = true
 
 signal direccion_vista_cambio(direccion: Vector2 )
 
@@ -74,14 +76,23 @@ func _on_spawn(posicion: Vector2, _direccion: String):
 	global_position = posicion
 
 func _on_vida_vida_termino() -> void:
-	queue_free()
-	ManejoEscenas.transicion("ir_oscurecer")
-	get_tree().call_deferred("reload_current_scene")
-	%Vida.set_vida(5)
-	ManejoEscenas.terminar_transicion()
-	
+	vivo = false
+	muerte.start()
+
 func no_permitir_movimiento():
 	puede_moverse = false
 
 func permitir_movimiento():
 	puede_moverse = true
+
+#hardcodeado por lo tanto esto es temporal 
+func _on_muerte_timeout() -> void:
+	ManejoEscenas.transicion("ir_oscurecer")
+	get_tree().call_group("eventos_juego","en_muerte")
+	get_tree().call_group("eventos_juego","cargar_nivel_async","res://Escenas/Niveles/buffet.tscn")
+	global_position = Vector2(1107,391)
+	vida.set_vida(vida.get_vida_maxima())
+	vivo = true
+	muerte.stop()
+	ManejoEscenas.terminar_transicion()
+	

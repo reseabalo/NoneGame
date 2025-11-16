@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://cu82am0651fpq"]
+[gd_scene load_steps=86 format=3 uid="uid://cu82am0651fpq"]
 
 [ext_resource type="Script" uid="uid://yixqcyd4x06m" path="res://Scrips/Jugador/jugador.gd" id="1_s1vfj"]
 [ext_resource type="Script" uid="uid://ce03jsbdwljjk" path="res://Scrips/ManejoVida/Vida.gd" id="2_eexci"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bw8t5j1fu6e6l" path="res://Scrips/Jugador/CambioColisiones.gd" id="5_eexci"]
 [ext_resource type="Script" uid="uid://bramogjdwanei" path="res://Scrips/Jugador/JugadorAnimacion.gd" id="5_ig1bj"]
 [ext_resource type="Texture2D" uid="uid://b0rb441rb48vm" path="res://Assets/Player/Personajes/Maria/maria-idle.png" id="5_p2vdp"]
+[ext_resource type="Texture2D" uid="uid://dge6bqobcjnh5" path="res://Assets/Player/Personajes/Maria/maria-cry.png" id="6_gk5by"]
 [ext_resource type="Script" uid="uid://e8u0byn0dbto" path="res://Scrips/ManejoVida/Hurtbox.gd" id="7_b8jmg"]
 [ext_resource type="PackedScene" uid="uid://cnmx7kcp446ab" path="res://Escenas/Interacciones/componente_interacciones.tscn" id="10_p2vdp"]
 
@@ -125,6 +126,22 @@ region = Rect2(0, 64, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_lsytb"]
 atlas = ExtResource("5_p2vdp")
 region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_silue"]
+atlas = ExtResource("6_gk5by")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iphe3"]
+atlas = ExtResource("6_gk5by")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t8l6"]
+atlas = ExtResource("6_gk5by")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c5c2"]
+atlas = ExtResource("6_gk5by")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3i2lk"]
 animations = [{
@@ -246,6 +263,23 @@ animations = [{
 "loop": false,
 "name": &"ilde",
 "speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_silue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iphe3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t8l6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1c5c2")
+}],
+"loop": true,
+"name": &"morir",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1vfj"]
@@ -766,6 +800,35 @@ tracks/2/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_clgas"]
+resource_name = "muerte"
+length = 0.9
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"morir"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l35hm"]
 _data = {
 &"RESET": SubResource("Animation_t7qj4"),
@@ -778,7 +841,8 @@ _data = {
 &"caminar_derecha": SubResource("Animation_ovq70"),
 &"caminar_izquierda": SubResource("Animation_v328t"),
 &"ilde_derecha": SubResource("Animation_c868g"),
-&"ilde_izquierda": SubResource("Animation_iqatp")
+&"ilde_izquierda": SubResource("Animation_iqatp"),
+&"muerte": SubResource("Animation_clgas")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v328t"]
@@ -840,6 +904,9 @@ blend_point_1/node = SubResource("AnimationNodeAnimation_65r3e")
 blend_point_1/pos = -1.0
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x66vg"]
+animation = &"muerte"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v328t"]
 advance_mode = 2
 
@@ -863,17 +930,35 @@ advance_expression = "atacando"
 advance_mode = 2
 advance_expression = "!atacando"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wp21d"]
+advance_mode = 2
+advance_expression = "!vivo"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s4gbw"]
+advance_mode = 2
+advance_expression = "!vivo"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4e12j"]
+advance_mode = 2
+advance_expression = "!vivo"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gk5by"]
+advance_mode = 2
+advance_expression = "vivo"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_dfbng"]
 states/End/position = Vector2(888, 90.2414)
 states/Start/position = Vector2(125.333, 89.9839)
 states/ataque/node = SubResource("AnimationNodeBlendSpace2D_irvkw")
-states/ataque/position = Vector2(555.821, 190.535)
+states/ataque/position = Vector2(94.4876, 192.858)
 states/caminata/node = SubResource("AnimationNodeBlendSpace2D_v328t")
 states/caminata/position = Vector2(279.102, 89.6472)
 states/ilde/node = SubResource("AnimationNodeBlendSpace1D_30oos")
-states/ilde/position = Vector2(278.974, 189.215)
-transitions = ["Start", "caminata", SubResource("AnimationNodeStateMachineTransition_v328t"), "caminata", "ataque", SubResource("AnimationNodeStateMachineTransition_fixik"), "caminata", "ilde", SubResource("AnimationNodeStateMachineTransition_g7y4j"), "ilde", "caminata", SubResource("AnimationNodeStateMachineTransition_nisqm"), "ilde", "ataque", SubResource("AnimationNodeStateMachineTransition_xai2x"), "ataque", "ilde", SubResource("AnimationNodeStateMachineTransition_0fcun")]
-graph_offset = Vector2(-255.846, 40.8274)
+states/ilde/position = Vector2(278.643, 191.277)
+states/muerte/node = SubResource("AnimationNodeAnimation_x66vg")
+states/muerte/position = Vector2(506.487, 292)
+transitions = ["Start", "caminata", SubResource("AnimationNodeStateMachineTransition_v328t"), "caminata", "ataque", SubResource("AnimationNodeStateMachineTransition_fixik"), "caminata", "ilde", SubResource("AnimationNodeStateMachineTransition_g7y4j"), "ilde", "caminata", SubResource("AnimationNodeStateMachineTransition_nisqm"), "ilde", "ataque", SubResource("AnimationNodeStateMachineTransition_xai2x"), "ataque", "ilde", SubResource("AnimationNodeStateMachineTransition_0fcun"), "caminata", "muerte", SubResource("AnimationNodeStateMachineTransition_wp21d"), "ataque", "muerte", SubResource("AnimationNodeStateMachineTransition_s4gbw"), "ilde", "muerte", SubResource("AnimationNodeStateMachineTransition_4e12j"), "muerte", "ilde", SubResource("AnimationNodeStateMachineTransition_gk5by")]
+graph_offset = Vector2(-211.846, 180.033)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v328t"]
 size = Vector2(10, 11)
@@ -883,6 +968,7 @@ z_index = 2
 y_sort_enabled = true
 collision_layer = 7
 script = ExtResource("1_s1vfj")
+velocidad_movimiento = 130.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
@@ -890,7 +976,7 @@ zoom = Vector2(2, 2)
 [node name="Vida" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_eexci")
-vida_maxima = 5
+vida_maxima = 8
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 z_index = 1
@@ -906,6 +992,7 @@ animation = &"ilde"
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("4_oolwk")
+"daño" = 2
 metadata/_custom_type_script = "uid://bdjytlsp754wa"
 
 [node name="Golpe" type="CollisionShape2D" parent="AnimatedSprite2D/HitBox"]
@@ -949,6 +1036,8 @@ wait_time = 0.3
 [node name="ataque_devuelta" type="Timer" parent="Timers"]
 wait_time = 0.4
 
+[node name="Muerte" type="Timer" parent="Timers"]
+
 [node name="JugadorAnimacion" type="Node" parent="." node_paths=PackedStringArray("animation_tree", "juga", "cambio_colisiones")]
 script = ExtResource("5_ig1bj")
 animation_tree = NodePath("../AnimationTree")
@@ -974,3 +1063,4 @@ position = Vector2(0, 7)
 [connection signal="timeout" from="Timers/dash_devuelta" to="." method="_on_dash_devuelta_timeout"]
 [connection signal="timeout" from="Timers/ataque_tiempo" to="." method="_on_ataque_tiempo_timeout"]
 [connection signal="timeout" from="Timers/ataque_devuelta" to="." method="_on_ataque_devuelta_timeout"]
+[connection signal="timeout" from="Timers/Muerte" to="." method="_on_muerte_timeout"]

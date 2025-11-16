@@ -151,3 +151,15 @@ func en_cargado_partida(datos_guardados: Array):
 func restauracion_enemigo(restaurado: Object):
 	add_child(restaurado)
 	
+func en_muerte():
+	var ciclo : bool = true
+	var cont : int = 0
+	var datos_temporales: String = "user://TemporalNivel" + str(cont) +".json"
+	 
+	while ciclo:
+		if FileAccess.file_exists(datos_temporales):
+			DirAccess.remove_absolute(datos_temporales)
+			cont += 1
+			datos_temporales = "user://TemporalNivel" + str(cont) +".json"
+		else:
+			ciclo = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjmv6aqsmmns6"]
+[gd_scene load_steps=10 format=3 uid="uid://cjmv6aqsmmns6"]
 
 [ext_resource type="Script" uid="uid://b1abik2w2lh8q" path="res://Scrips/Raiz/raiz_mundo.gd" id="1_0j5ga"]
 [ext_resource type="PackedScene" uid="uid://cu82am0651fpq" path="res://Escenas/Jugador/Jugador.tscn" id="1_knk6m"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bera7l2q7yv3c" path="res://Scrips/GuardadoPartida/GuardadoCargadoPartida.gd" id="4_wyvlv"]
 [ext_resource type="PackedScene" uid="uid://ct45558fs3fqf" path="res://Escenas/Jugador/barra_vida.tscn" id="7_f1u03"]
 [ext_resource type="Texture2D" uid="uid://cktvaukav6ucd" path="res://Assets/GUI/Botones Menus/Tuerca Opciones.png" id="8_tkjw4"]
+[ext_resource type="AudioStream" uid="uid://bkvrim0nttk2k" path="res://Assets/Audio/Exploración_.wav" id="9_aw4xx"]
 
 [node name="Juego" type="Node2D"]
 script = ExtResource("1_wxjva")
@@ -45,5 +46,10 @@ offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
 texture_normal = ExtResource("8_tkjw4")
+
+[node name="MusicaExploracion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_aw4xx")
+autoplay = true
+bus = &"Musica"
 
 [connection signal="pressed" from="CanvasLayer/APausa" to="." method="_on_a_pausa_pressed"]

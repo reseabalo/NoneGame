@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bffwcoxxx3k20"]
+[gd_scene load_steps=7 format=3 uid="uid://bffwcoxxx3k20"]
 
 [ext_resource type="Script" uid="uid://22yfju4wv2li" path="res://Scrips/GUI/seleccion_personaje.gd" id="1_7ycly"]
+[ext_resource type="VideoStream" uid="uid://m8i1v57haijn" path="res://Assets/Cinematicas/CinematicaNuevaPartida.ogv" id="2_eqwcc"]
 [ext_resource type="Texture2D" uid="uid://dupc8460e8ej7" path="res://Assets/GUI/Seleccion Personaje/jere 1.png" id="2_jxqti"]
 [ext_resource type="Texture2D" uid="uid://x3jpr1fwlxt3" path="res://Assets/GUI/Seleccion Personaje/seleccion jere.png" id="3_eqwcc"]
 [ext_resource type="Texture2D" uid="uid://bhxccleudy0al" path="res://Assets/GUI/Seleccion Personaje/maria 1.png" id="4_l38ve"]
@@ -11,7 +12,26 @@ script = ExtResource("1_7ycly")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CinematicaInicioPartida" type="VideoStreamPlayer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+stream = ExtResource("2_eqwcc")
+
+[node name="BotonesSeleccion" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -24,17 +44,21 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 
-[node name="Maria" type="TextureButton" parent="CanvasLayer/HBoxContainer"]
+[node name="Maria" type="TextureButton" parent="CanvasLayer/BotonesSeleccion"]
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("4_l38ve")
+texture_pressed = ExtResource("5_8solv")
 texture_hover = ExtResource("5_8solv")
 
-[node name="Jere" type="TextureButton" parent="CanvasLayer/HBoxContainer"]
+[node name="Jere" type="TextureButton" parent="CanvasLayer/BotonesSeleccion"]
 layout_mode = 2
 size_flags_vertical = 4
+keep_pressed_outside = true
 texture_normal = ExtResource("2_jxqti")
+texture_pressed = ExtResource("3_eqwcc")
 texture_hover = ExtResource("3_eqwcc")
 
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/Maria" to="." method="_on_maria_pressed"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/Jere" to="." method="_on_jere_pressed"]
+[connection signal="finished" from="CanvasLayer/CinematicaInicioPartida" to="." method="_on_cinematica_inicio_partida_finished"]
+[connection signal="pressed" from="CanvasLayer/BotonesSeleccion/Maria" to="." method="_on_maria_pressed"]
+[connection signal="pressed" from="CanvasLayer/BotonesSeleccion/Jere" to="." method="_on_jere_pressed"]

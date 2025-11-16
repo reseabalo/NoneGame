@@ -133,7 +133,7 @@ autoplay = "idle"
 
 [node name="Vida_enemigo" type="Node" parent="."]
 script = ExtResource("3_3h4ji")
-vida_maxima = 1
+vida_maxima = 4
 metadata/_custom_type_script = "uid://ce03jsbdwljjk"
 
 [node name="area_deteccion" type="Area2D" parent="."]

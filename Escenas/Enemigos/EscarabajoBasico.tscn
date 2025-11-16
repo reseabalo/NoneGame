@@ -184,7 +184,7 @@ libraries = {
 
 [node name="Vida_enemigo" type="Node" parent="."]
 script = ExtResource("3_locg5")
-vida_maxima = 2
+vida_maxima = 8
 metadata/_custom_type_script = "uid://ce03jsbdwljjk"
 
 [node name="area_ataque" type="Area2D" parent="."]
@@ -216,9 +216,10 @@ shape = SubResource("CapsuleShape2D_t34q4")
 debug_color = Color(0.993547, 0, 0.235962, 0.42)
 
 [node name="HitBox" type="Area2D" parent="."]
-collision_layer = 512
+collision_layer = 516
 collision_mask = 0
 script = ExtResource("5_fns4a")
+"daño" = 2
 metadata/_custom_type_script = "uid://bdjytlsp754wa"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]

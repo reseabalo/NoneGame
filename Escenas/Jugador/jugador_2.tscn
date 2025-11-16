@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://df0qyd5xnmufv"]
+[gd_scene load_steps=84 format=3 uid="uid://df0qyd5xnmufv"]
 
 [ext_resource type="Script" uid="uid://yixqcyd4x06m" path="res://Scrips/Jugador/jugador.gd" id="1_7pajj"]
 [ext_resource type="Script" uid="uid://ce03jsbdwljjk" path="res://Scrips/ManejoVida/Vida.gd" id="2_aokv6"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bw8t5j1fu6e6l" path="res://Scrips/Jugador/CambioColisiones.gd" id="5_7g1hu"]
 [ext_resource type="Script" uid="uid://bramogjdwanei" path="res://Scrips/Jugador/JugadorAnimacion.gd" id="6_ns8lb"]
 [ext_resource type="Script" uid="uid://e8u0byn0dbto" path="res://Scrips/ManejoVida/Hurtbox.gd" id="7_imsw6"]
-
+[ext_resource type="PackedScene" uid="uid://cnmx7kcp446ab" path="res://Escenas/Interacciones/componente_interacciones.tscn" id="10_queqx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4mp40"]
 size = Vector2(15, 6)
@@ -740,48 +740,6 @@ tracks/2/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_7g1hu"]
-resource_name = "ilde_izquierda"
-length = 1.3
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"ilde"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:flip_h")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_c868g"]
 resource_name = "ilde_derecha"
 length = 1.3
@@ -824,6 +782,48 @@ tracks/2/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_7g1hu"]
+resource_name = "ilde_izquierda"
+length = 1.3
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"ilde"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l35hm"]
 _data = {
 &"RESET": SubResource("Animation_t7qj4"),
@@ -839,6 +839,9 @@ _data = {
 &"ilde_derecha": SubResource("Animation_c868g"),
 &"ilde_izquierda": SubResource("Animation_7g1hu")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ipn71"]
+animation = &"ilde_derecha"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2ilde"]
 animation = &"ataque_abajo"
@@ -922,17 +925,35 @@ advance_expression = "!atacando"
 advance_mode = 2
 advance_expression = "atacando"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tyr3f"]
+advance_mode = 2
+advance_expression = "!vivo"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0ymhq"]
+advance_mode = 2
+advance_expression = "!vivo"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_artkw"]
+advance_mode = 2
+advance_expression = "!vivo"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7bflr"]
+advance_mode = 2
+advance_expression = "vivo"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_dfbng"]
 states/End/position = Vector2(888, 90.2414)
+states/Muerte/node = SubResource("AnimationNodeAnimation_ipn71")
+states/Muerte/position = Vector2(458.821, 312.333)
 states/Start/position = Vector2(125.333, 89.9839)
 states/ataque/node = SubResource("AnimationNodeBlendSpace2D_br6cv")
-states/ataque/position = Vector2(556.154, 184.656)
+states/ataque/position = Vector2(126.615, 184.656)
 states/caminata/node = SubResource("AnimationNodeBlendSpace2D_7g1hu")
 states/caminata/position = Vector2(279.688, 90.6818)
 states/ilde/node = SubResource("AnimationNodeBlendSpace1D_ipn71")
 states/ilde/position = Vector2(278.644, 189.989)
-transitions = ["Start", "caminata", SubResource("AnimationNodeStateMachineTransition_7g1hu"), "caminata", "ataque", SubResource("AnimationNodeStateMachineTransition_nt8w3"), "ilde", "caminata", SubResource("AnimationNodeStateMachineTransition_7ihcc"), "caminata", "ilde", SubResource("AnimationNodeStateMachineTransition_j1500"), "ataque", "ilde", SubResource("AnimationNodeStateMachineTransition_7ujb7"), "ilde", "ataque", SubResource("AnimationNodeStateMachineTransition_bndif")]
-graph_offset = Vector2(-205.846, 27.3223)
+transitions = ["Start", "caminata", SubResource("AnimationNodeStateMachineTransition_7g1hu"), "caminata", "ataque", SubResource("AnimationNodeStateMachineTransition_nt8w3"), "ilde", "caminata", SubResource("AnimationNodeStateMachineTransition_7ihcc"), "caminata", "ilde", SubResource("AnimationNodeStateMachineTransition_j1500"), "ataque", "ilde", SubResource("AnimationNodeStateMachineTransition_7ujb7"), "ilde", "ataque", SubResource("AnimationNodeStateMachineTransition_bndif"), "ataque", "Muerte", SubResource("AnimationNodeStateMachineTransition_tyr3f"), "ilde", "Muerte", SubResource("AnimationNodeStateMachineTransition_0ymhq"), "caminata", "Muerte", SubResource("AnimationNodeStateMachineTransition_artkw"), "Muerte", "ilde", SubResource("AnimationNodeStateMachineTransition_7bflr")]
+graph_offset = Vector2(-181.846, 151)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v328t"]
 size = Vector2(10, 13.5)
@@ -942,6 +963,7 @@ z_index = 2
 y_sort_enabled = true
 collision_layer = 7
 script = ExtResource("1_7pajj")
+velocidad_movimiento = 160.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
@@ -1009,6 +1031,9 @@ wait_time = 0.3
 [node name="ataque_devuelta" type="Timer" parent="Timers"]
 wait_time = 0.4
 
+[node name="Muerte" type="Timer" parent="Timers"]
+wait_time = 0.1
+
 [node name="JugadorAnimacion" type="Node" parent="." node_paths=PackedStringArray("animation_tree", "juga", "cambio_colisiones")]
 script = ExtResource("6_ns8lb")
 animation_tree = NodePath("../AnimationTree")
@@ -1026,7 +1051,9 @@ metadata/_custom_type_script = "uid://e8u0byn0dbto"
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_v328t")
 
-[connection signal="vida_cambio" from="Vida" to="." method="_on_vida_vida_cambio"]
+[node name="ComponenteInteracciones" parent="." instance=ExtResource("10_queqx")]
+position = Vector2(0, 6)
+
 [connection signal="vida_termino" from="Vida" to="." method="_on_vida_vida_termino"]
 [connection signal="timeout" from="Timers/dash_tiempo" to="." method="_on_dash_tiempo_timeout"]
 [connection signal="timeout" from="Timers/dash_devuelta" to="." method="_on_dash_devuelta_timeout"]
