@@ -1526,10 +1526,19 @@ tipo_transicion = "ir_oscurecer"
 position = Vector2(-1313, 588)
 
 [node name="basico_1" parent="Enemigos" instance=ExtResource("7_44e4q")]
-position = Vector2(-338, 462)
+position = Vector2(-459, 455)
 
 [node name="basico_3" parent="Enemigos" instance=ExtResource("7_44e4q")]
 position = Vector2(-946, 214)
+
+[node name="basico_4" parent="Enemigos" instance=ExtResource("7_44e4q")]
+position = Vector2(-675, 462)
+
+[node name="basico_5" parent="Enemigos" instance=ExtResource("6_tw573")]
+position = Vector2(-563, 447)
+
+[node name="basico_6" parent="Enemigos" instance=ExtResource("7_44e4q")]
+position = Vector2(-1180, 593)
 
 [connection signal="entro_puerta" from="PuertaPlantaBase" to="." method="_on_puerta_entro"]
 [connection signal="entro_puerta" from="PuertaBatallaSotano" to="." method="_on_puerta_entro"]

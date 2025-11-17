@@ -12,6 +12,7 @@ var _personaje_2: bool
 var carga_partida: bool
 var esta_juego: bool = false
 var salio_de_menu: bool = false
+var reproducir_cinematica_inicio: bool = true
 
 var nombre_puerta_salida:String
 var nombre_ultima_puerta: String = ""

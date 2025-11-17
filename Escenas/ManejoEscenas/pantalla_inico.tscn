@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dli471tb8hdt7"]
+[gd_scene load_steps=13 format=3 uid="uid://dli471tb8hdt7"]
 
 [ext_resource type="Script" uid="uid://bmeyp3oob10nk" path="res://Scrips/ManejoEscenas/PantallaInico.gd" id="1_6i2i5"]
 [ext_resource type="VideoStream" uid="uid://5yb07k0b0lf4" path="res://Assets/Cinematicas/CinematicaInicioPartida.ogv" id="2_40d5h"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://df3u3fqrreegy" path="res://Assets/GUI/Botones Menus/NUEVAPARTIDA_Pres.png" id="4_mwq6q"]
 [ext_resource type="Texture2D" uid="uid://d3iruxlbyn638" path="res://Assets/GUI/Botones Menus/CARGARPARTIDA.png" id="5_tgyw3"]
 [ext_resource type="Texture2D" uid="uid://4lj5bi0ijp4k" path="res://Assets/GUI/Botones Menus/CARGARPARTIDA_Pres.png" id="6_jy38p"]
+[ext_resource type="Texture2D" uid="uid://b6tv5dhkfmjeu" path="res://Assets/GUI/Botones Menus/CARGARPARTIDADISABILITADO.png" id="6_mwq6q"]
 [ext_resource type="Texture2D" uid="uid://btpcpj5k8kge0" path="res://Assets/GUI/Botones Menus/OPCIONES.png" id="7_bmeen"]
 [ext_resource type="Texture2D" uid="uid://drr345hywa8vi" path="res://Assets/GUI/Botones Menus/OPCIONES_Pres.png" id="8_84rd8"]
 [ext_resource type="Texture2D" uid="uid://b8ig3m48dy3nh" path="res://Assets/GUI/Botones Menus/SALIR.png" id="9_8movm"]
@@ -49,8 +50,10 @@ texture_pressed = ExtResource("4_mwq6q")
 
 [node name="CargarPartida" type="TextureButton" parent="CanvasLayer/ContenedorBotones"]
 layout_mode = 2
+disabled = true
 texture_normal = ExtResource("5_tgyw3")
 texture_pressed = ExtResource("6_jy38p")
+texture_disabled = ExtResource("6_mwq6q")
 
 [node name="Opciones" type="TextureButton" parent="CanvasLayer/ContenedorBotones"]
 layout_mode = 2

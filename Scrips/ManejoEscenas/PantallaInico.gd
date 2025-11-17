@@ -6,8 +6,11 @@ extends Node2D
 
 #se encarga se settear los cambios que hallas hecho en el menu de opciones
 func _ready() -> void:
-	cinematica_inicio.play()
-	contenedor_botones.visible = false
+	if ManejoEscenas.reproducir_cinematica_inicio:
+		cinematica_inicio.play()
+		contenedor_botones.visible = false
+	else:
+		contenedor_botones.move_to_front()
 	GUI.calculate_window_size()
 	GUI.set_modo_pantalla()
 	GUI.redimencionar_ventana()
@@ -35,6 +38,7 @@ func _on_cinematica_inicio_finished() -> void:
 	contenedor_botones.move_to_front()
 	musica_menu.play()
 	musica_menu.autoplay = true
+	ManejoEscenas.reproducir_cinematica_inicio = false
 
 func _input(event: InputEvent) -> void:
 	

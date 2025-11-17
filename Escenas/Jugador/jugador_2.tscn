@@ -1059,3 +1059,4 @@ position = Vector2(0, 6)
 [connection signal="timeout" from="Timers/dash_devuelta" to="." method="_on_dash_devuelta_timeout"]
 [connection signal="timeout" from="Timers/ataque_tiempo" to="." method="_on_ataque_tiempo_timeout"]
 [connection signal="timeout" from="Timers/ataque_devuelta" to="." method="_on_ataque_devuelta_timeout"]
+[connection signal="timeout" from="Timers/Muerte" to="." method="_on_muerte_timeout"]

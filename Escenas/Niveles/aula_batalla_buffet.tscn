@@ -1,9 +1,12 @@
-[gd_scene load_steps=15 format=4 uid="uid://casvj2qac6r8u"]
+[gd_scene load_steps=18 format=4 uid="uid://casvj2qac6r8u"]
 
 [ext_resource type="Script" uid="uid://cx22j3jtqwne6" path="res://Scrips/NIveles/datosniveles.gd" id="1_ldd60"]
 [ext_resource type="Texture2D" uid="uid://bathdd0bs18xw" path="res://Assets/Entorno/Mapa/Mapas-Ambiente.png" id="1_oi5vq"]
 [ext_resource type="Texture2D" uid="uid://diamx0sjgtkdi" path="res://Assets/Entorno/Mapa/Objetos-1.png" id="2_oi5vq"]
 [ext_resource type="PackedScene" uid="uid://swp8l70t87jn" path="res://Escenas/ManejoEscenas/puertaancha.tscn" id="3_1t7rl"]
+[ext_resource type="PackedScene" uid="uid://lvisquyvpxde" path="res://Escenas/Enemigos/MoscaBasico.tscn" id="5_5ssfv"]
+[ext_resource type="PackedScene" uid="uid://bncc6jynwne4c" path="res://Escenas/Enemigos/EscarabajoBasico.tscn" id="6_wcimb"]
+[ext_resource type="PackedScene" uid="uid://b2uh6o4mel6df" path="res://Escenas/JefePelado.tscn" id="7_wcimb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5vgrr"]
 texture = ExtResource("1_oi5vq")
@@ -955,6 +958,36 @@ tipo_transicion = "ir_oscurecer"
 
 [node name="Spawn" parent="Puerta" index="1"]
 position = Vector2(0, -22)
+
+[node name="Enemigos" type="Node2D" parent="."]
+position = Vector2(319, 42)
+
+[node name="basico_2" parent="Enemigos" instance=ExtResource("5_5ssfv")]
+position = Vector2(30, 99)
+
+[node name="basico_3" parent="Enemigos" instance=ExtResource("5_5ssfv")]
+position = Vector2(-50, 65)
+
+[node name="basico_4" parent="Enemigos" instance=ExtResource("5_5ssfv")]
+position = Vector2(-125, 91)
+
+[node name="basico_5" parent="Enemigos" instance=ExtResource("5_5ssfv")]
+position = Vector2(-200, 69)
+
+[node name="basico_1" parent="Enemigos" instance=ExtResource("6_wcimb")]
+position = Vector2(20, 237)
+
+[node name="basico_6" parent="Enemigos" instance=ExtResource("6_wcimb")]
+position = Vector2(-118, 159)
+
+[node name="basico_7" parent="Enemigos" instance=ExtResource("6_wcimb")]
+position = Vector2(-179, 237)
+
+[node name="basico_8" parent="Enemigos" instance=ExtResource("6_wcimb")]
+position = Vector2(-12, 161)
+
+[node name="Jefe" parent="." instance=ExtResource("7_wcimb")]
+position = Vector2(319, 42)
 
 [connection signal="entro_puerta" from="Puerta" to="." method="_on_puerta_entro"]
 

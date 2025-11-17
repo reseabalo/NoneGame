@@ -77,6 +77,7 @@ func _on_spawn(posicion: Vector2, _direccion: String):
 
 func _on_vida_vida_termino() -> void:
 	vivo = false
+	puede_moverse = false
 	muerte.start()
 
 func no_permitir_movimiento():
@@ -93,6 +94,7 @@ func _on_muerte_timeout() -> void:
 	global_position = Vector2(1107,391)
 	vida.set_vida(vida.get_vida_maxima())
 	vivo = true
+	puede_moverse = true
 	muerte.stop()
 	ManejoEscenas.terminar_transicion()
 	

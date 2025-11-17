@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://bspii1qc4o7bn"]
+[gd_scene load_steps=20 format=4 uid="uid://bspii1qc4o7bn"]
 
 [ext_resource type="Texture2D" uid="uid://bathdd0bs18xw" path="res://Assets/Entorno/Mapa/Mapas-Ambiente.png" id="1_bu83x"]
 [ext_resource type="Script" uid="uid://cx22j3jtqwne6" path="res://Scrips/NIveles/datosniveles.gd" id="1_gepfr"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://swp8l70t87jn" path="res://Escenas/ManejoEscenas/puertaancha.tscn" id="3_4rkjt"]
 [ext_resource type="PackedScene" uid="uid://bncc6jynwne4c" path="res://Escenas/Enemigos/EscarabajoBasico.tscn" id="5_a73aw"]
 [ext_resource type="PackedScene" uid="uid://lvisquyvpxde" path="res://Escenas/Enemigos/MoscaBasico.tscn" id="6_sfgrv"]
+[ext_resource type="PackedScene" uid="uid://1r0eysewudei" path="res://Escenas/JefeVero.tscn" id="7_sfgrv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g5wq0"]
 texture = ExtResource("1_bu83x")
@@ -1416,26 +1417,32 @@ tipo_transicion = "ir_oscurecer"
 [node name="Spawn" parent="Puerta" index="1"]
 position = Vector2(-1, -19)
 
-[node name="basico_1" parent="." instance=ExtResource("5_a73aw")]
-position = Vector2(245, 217)
+[node name="Enemigo" type="Node2D" parent="."]
+position = Vector2(327, 74)
 
-[node name="basico_2" parent="." instance=ExtResource("5_a73aw")]
-position = Vector2(324, 256)
+[node name="basico_1" parent="Enemigo" instance=ExtResource("5_a73aw")]
+position = Vector2(-82, 143)
 
-[node name="basico_3" parent="." instance=ExtResource("5_a73aw")]
-position = Vector2(157, 265)
+[node name="basico_2" parent="Enemigo" instance=ExtResource("5_a73aw")]
+position = Vector2(-3, 182)
 
-[node name="basico_4" parent="." instance=ExtResource("6_sfgrv")]
-position = Vector2(181, 179)
+[node name="basico_3" parent="Enemigo" instance=ExtResource("5_a73aw")]
+position = Vector2(-170, 191)
 
-[node name="basico_5" parent="." instance=ExtResource("6_sfgrv")]
-position = Vector2(330, 170)
+[node name="basico_4" parent="Enemigo" instance=ExtResource("6_sfgrv")]
+position = Vector2(-146, 105)
 
-[node name="basico_6" parent="." instance=ExtResource("6_sfgrv")]
-position = Vector2(252, 131)
+[node name="basico_5" parent="Enemigo" instance=ExtResource("6_sfgrv")]
+position = Vector2(3, 96)
 
-[node name="basico_7" parent="." instance=ExtResource("6_sfgrv")]
-position = Vector2(158, 126)
+[node name="basico_6" parent="Enemigo" instance=ExtResource("6_sfgrv")]
+position = Vector2(-75, 57)
+
+[node name="basico_7" parent="Enemigo" instance=ExtResource("6_sfgrv")]
+position = Vector2(-169, 52)
+
+[node name="Jefe" parent="." instance=ExtResource("7_sfgrv")]
+position = Vector2(327, 74)
 
 [connection signal="entro_puerta" from="Puerta" to="." method="_on_puerta_entro"]
 

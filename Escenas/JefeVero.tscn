@@ -1,0 +1,172 @@
+[gd_scene load_steps=15 format=3 uid="uid://1r0eysewudei"]
+
+[ext_resource type="Texture2D" uid="uid://bbji0j20xxrck" path="res://Assets/Jefes/Jefes/Vero_Ataque3.png" id="1_iol45"]
+[ext_resource type="Script" uid="uid://y1rimmsalvn6" path="res://Scrips/jefe_vero.gd" id="1_k6tbg"]
+[ext_resource type="Script" uid="uid://ce03jsbdwljjk" path="res://Scrips/ManejoVida/Vida.gd" id="3_4k40d"]
+[ext_resource type="Script" uid="uid://e8u0byn0dbto" path="res://Scrips/ManejoVida/Hurtbox.gd" id="4_8f7vf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6tbg"]
+atlas = ExtResource("1_iol45")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rssc"]
+atlas = ExtResource("1_iol45")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4k40d"]
+atlas = ExtResource("1_iol45")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f7vf"]
+atlas = ExtResource("1_iol45")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yhyw5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6tbg")
+}],
+"loop": true,
+"name": &"basico",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rssc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4k40d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f7vf")
+}],
+"loop": true,
+"name": &"fuego",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_8f7vf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"basico"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_4k40d"]
+resource_name = "ilde"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"basico"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_yhyw5"]
+resource_name = "muerte"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"fuego"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qr5da"]
+_data = {
+&"RESET": SubResource("Animation_8f7vf"),
+&"ilde": SubResource("Animation_4k40d"),
+&"muerte": SubResource("Animation_yhyw5")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yhyw5"]
+size = Vector2(21, 30)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_k6tbg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yhyw5")
+animation = &"basico"
+
+[node name="AnimacionVero" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qr5da")
+}
+
+[node name="VidaVero" type="Node" parent="."]
+script = ExtResource("3_4k40d")
+vida_maxima = 1
+metadata/_custom_type_script = "uid://ce03jsbdwljjk"
+
+[node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("vida")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_8f7vf")
+vida = NodePath("../VidaVero")
+metadata/_custom_type_script = "uid://e8u0byn0dbto"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-0.5, 5)
+shape = SubResource("RectangleShape2D_yhyw5")
+
+[connection signal="animation_finished" from="AnimacionVero" to="." method="_on_animacion_vero_animation_finished"]
+[connection signal="vida_termino" from="VidaVero" to="." method="_on_vida_vero_vida_termino"]

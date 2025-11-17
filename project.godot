@@ -13,7 +13,7 @@ config_version=5
 config/name="Bugversity"
 run/main_scene="uid://dli471tb8hdt7"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://outrdwytq0a8"
 
 [audio]
 
